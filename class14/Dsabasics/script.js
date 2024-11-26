@@ -301,4 +301,48 @@
 
 
 
+////////////////////////////////////////// MODULO(%) funtion //////////////////////////////////////////////////////////////
+//  MODULO(%) funtion : it is used for finding remainder 
+//  use to extract  last digits of a number and also extrat first all digits except last digit
 
+let num = 123456789;
+console.log(num%10); // to extract last digit
+console.log(Math.floor(num/10)); // to extract first all digits except last digit
+
+// ... existing code ...
+
+// Q1: Write a function to sum all digits in a number
+function sumOfDigits(num) {
+    let sum = 0;
+    while (num > 0) {
+        sum += num % 10;          // get last digit and add to sum
+        num = Math.floor(num/10); // remove last digit
+    }
+    return sum;
+}
+// Example: sumOfDigits(123) = 1 + 2 + 3 = 6
+
+// Q2: Write a function to reverse a number
+function reverseNumber(num) {
+    let reversed = 0;
+    while (num > 0) {
+        reversed = (reversed * 10) + (num % 10);
+        num = Math.floor(num/10);
+    }
+    return reversed;
+}
+// Example: reverseNumber(123) = 321
+
+// Q3: Write a function to count digits in a number
+function countDigits(num) {
+    let count = 0;
+    while (num > 0) {
+        count++;
+        num = Math.floor(num/10);
+    }
+    return count;
+}
+// Example: countDigits(123) = 3
+
+
+////////////////////////////////////////////////////////////////////////////////////////
