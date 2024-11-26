@@ -13,6 +13,7 @@ main {
   height: 100%;
   width: 100%;
   position: relative;
+  background-color: crimson;
 }
 main img {
   position: absolute;
@@ -20,19 +21,19 @@ main img {
   top: 0%;
   left: 0%;
   height: 6rem;
-  opacity: 1;
+  display: block;
   transition: all linear 0.2s;
   z-index: 3;
 }
 main #black {
-  width: 200px;
-  height: 200px;
+  width: 280px;
+  height: 280px;
   background-color: black;
   border-radius: 50%;
   position: absolute;
   top: 90%;
   left: 90%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -80%);
 }
 main button {
   display: none;
