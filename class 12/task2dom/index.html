@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analog Watch</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #282c34;
+    }
+    .clock {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border: 5px solid #fff;
+      border-radius: 50%;
+      background: radial-gradient(circle, #444, #000);
+    }
+    .clock .center {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .hand {
+      position: absolute;
+      width: 50%;
+      height: 6px;
+      background: #fff;
+      top: 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: transform 0.05s cubic-bezier(0.4, 2.3, 0.3, 1);
+    }
+    .hour {
+      height: 8px;
+      background: #ff6f61;
+    }
+    .minute {
+      height: 4px;
+      background: #61dafb;
+    }
+    .second {
+      height: 2px;
+      background: #f4b400;
+    }
+  </style>
+</head>
+<body>
+  <div class="clock">
+    <div class="center"></div>
+    <div class="hand hour" id="hour"></div>
+    <div class="hand minute" id="minute"></div>
+    <div class="hand second" id="second"></div>
+  </div>
+  <script>
+    function updateClock() {
+      const hourHand = document.getElementById('hour');
+      const minuteHand = document.getElementById('minute');
+      const secondHand = document.getElementById('second');
+
+      const now = new Date();   
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+
+      const hourDeg = (360 / 12) * (hours % 12) + (30 / 60) * minutes;
+      const minuteDeg = (360 / 60) * minutes + (6 / 60) * seconds;
+      const secondDeg = (360 / 60) * seconds;
+
+      hourHand.style.transform = `rotate(${hourDeg}deg)`;
+      minuteHand.style.transform = `rotate(${minuteDeg}deg)`;
+      secondHand.style.transform = `rotate(${secondDeg}deg)`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
