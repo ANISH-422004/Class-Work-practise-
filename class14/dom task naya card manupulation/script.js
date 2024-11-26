@@ -7,7 +7,7 @@ const users = [
     {src:"https://plus.unsplash.com/premium_photo-1670573802857-aeae2b087487?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHBvdHJhaXR8ZW58MHx8MHx8fDA%3D",name:"Anjolaiya",age:21,status:"Unknown"}
 ]
 
-let body = document.querySelector("body");
+
 
 
 users.forEach(function(user){
@@ -19,8 +19,15 @@ users.forEach(function(user){
                                     <h2>${user.status}</h2>
                                     <button>make friend</button>
                         </div>`
+    
     document.querySelector("main").innerHTML += card;
 })
+
+
+let body = document.querySelector("body");
+
+//// Event Delegation : its is a technique of handling events on a parent element instead of individual child elements. 
+// here we are handling the event on the parent element i.e body and then we are checking if the clicked element is a button or not. and then we are seeig who is its parent element and then we are changing the status and the button text accordingly by variable to store the friend status
 
 
 // body.addEventListener("click", function(e) {
@@ -41,31 +48,60 @@ users.forEach(function(user){
 //     }
 // })
 
-body.addEventListener("click", function(e) {
-    if (e.target.tagName === "BUTTON") {
-        const card = e.target.parentElement;
-        const statusElement = card.querySelector("h2");
-        const buttonElement = e.target;
-        const userName = card.querySelector("h3").innerText;
+
+
+
+// body.addEventListener("click", function(e) {
+//     if (e.target.tagName === "BUTTON") {
+//         const card = e.target.parentElement;
+//         const statusElement = card.querySelector("h2");
+//         const buttonElement = e.target;
+//         const userName = card.querySelector("h3").innerText;
         
-        // Find the user in the array
-        const user = users.find(u => u.name === userName);
+//         // Find the user in the array
+//         const user = users.find(u => u.name === userName);
         
-        if (buttonElement.innerText === "make friend") {
-            // Update both DOM and data
-            statusElement.innerText = "friend";
-            statusElement.style.color = "green";
-            buttonElement.innerText = "unfriend";
-            user.status = "friend";
-        } else {
-            // Update both DOM and data
-            statusElement.innerText = "Unknown";
-            statusElement.style.color = "red";
-            buttonElement.innerText = "make friend";
-            user.status = "Unknown";
+//         if (buttonElement.innerText === "make friend") {
+//             // Update both DOM and data
+//             statusElement.innerText = "friend";
+//             statusElement.style.color = "green";
+//             buttonElement.innerText = "unfriend";
+//             user.status = "friend";
+//         } else {
+//             // Update both DOM and data
+//             statusElement.innerText = "Unknown";
+//             statusElement.style.color = "red";
+//             buttonElement.innerText = "make friend";
+//             user.status = "Unknown";
+//         }
+        
+//         // Log to verify the array is updated
+//         // console.log("Updated users:", users);
+//     }
+// })
+
+
+var cards = document.querySelectorAll(".card");
+
+cards.forEach(function(card){
+    var friend = 0;
+    let button = card.querySelector("button");
+    let status = card.querySelector("h2");
+
+    button.addEventListener("click", function(){
+        if (friend == 0){
+            button.innerText = "unfriend";
+            status.innerText = "friend";
+            status.style.color = "green";
+            friend = 1;
+        } 
+        
+        else {
+            button.innerText = "make friend";
+            status.innerText = "Unknown";
+            status.style.color = "red";
+            friend = 0;
         }
-        
-        // Log to verify the array is updated
-        // console.log("Updated users:", users);
-    }
-})
+
+    });
+});

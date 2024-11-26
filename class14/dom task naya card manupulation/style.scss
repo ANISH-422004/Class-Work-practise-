@@ -49,16 +49,15 @@ main{
             color: red;
         }
         button{
+            text-transform: uppercase;
+            font-weight: 600;
             width: 90%;
             height: 2rem;
             border-radius: 1rem;
-            background-color: black;
+            background-color: rgb(39, 68, 100);
             color: white;
             transition: all 0.1s ease;
-            &:hover{
-                background-color: white;
-                color: black;
-            }
+          
             &:active{
                 background-color: red;
                 color: white;
