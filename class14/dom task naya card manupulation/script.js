@@ -8,23 +8,84 @@ const users = [
 ]
 
 
-
-
-users.forEach(function(user){
-    // console.log(user);
-    let card = `        <div class="card">
-                                    <img src=${user.src} alt="">
-                                    <h3>${user.name}</h3>
-                                    <h4>age:${user.age}</h4>    
-                                    <h2>${user.status}</h2>
-                                    <button>make friend</button>
-                        </div>`
-    
-    document.querySelector("main").innerHTML += card;
-})
-
-
 let body = document.querySelector("body");
+
+
+function createCard(){
+    users.forEach(function(user,idx){
+        // console.log(user);
+        let card = `        <div class="card">
+                                        <img src=${user.src} alt="">
+                                        <h3>${user.name}</h3>
+                                        <h4>age:${user.age}</h4>    
+                                        <h2 class="${user.status}">${user.status}</h2>
+                                        <button id="${idx}">make friend</button>
+                            </div>     `
+        
+        document.querySelector("main").innerHTML += card;
+    })
+}
+createCard();
+
+
+
+body.addEventListener("click",function(dets){
+    // console.log( );
+    if (users[dets.target.id].status == "Unknown"){
+        users[dets.target.id].status = "friend";
+        dets.target.innerText = "unfriend";
+        var h2 = dets.target.parentElement.querySelector("h2");
+        h2.innerText = "friend";
+        h2.style.color = "green";
+    }
+    else{
+        users[dets.target.id].status = "Unknown";
+        dets.target.innerText = "make friend";
+        var h2 = dets.target.parentElement.querySelector("h2");
+        h2.innerText = "Unknown";
+        h2.style.color = "red";
+    }
+    createCard();
+    
+});
+
+
+// new concept to directly make cance in database const user =[]
+// and then making new HTML and injecting it in index.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //// Event Delegation : its is a technique of handling events on a parent element instead of individual child elements. 
 // here we are handling the event on the parent element i.e body and then we are checking if the clicked element is a button or not. and then we are seeig who is its parent element and then we are changing the status and the button text accordingly by variable to store the friend status
@@ -47,6 +108,10 @@ let body = document.querySelector("body");
 //         }
 //     }
 // })
+
+
+
+
 
 
 
@@ -81,27 +146,32 @@ let body = document.querySelector("body");
 // })
 
 
-var cards = document.querySelectorAll(".card");
 
-cards.forEach(function(card){
-    var friend = 0;
-    let button = card.querySelector("button");
-    let status = card.querySelector("h2");
 
-    button.addEventListener("click", function(){
-        if (friend == 0){
-            button.innerText = "unfriend";
-            status.innerText = "friend";
-            status.style.color = "green";
-            friend = 1;
-        } 
+
+
+
+// var cards = document.querySelectorAll(".card");
+
+// cards.forEach(function(card){
+//     var friend = 0;
+//     let button = card.querySelector("button");
+//     let status = card.querySelector("h2");
+
+//     button.addEventListener("click", function(){
+//         if (friend == 0){
+//             button.innerText = "unfriend";
+//             status.innerText = "friend";
+//             status.style.color = "green";
+//             friend = 1;
+//         } 
         
-        else {
-            button.innerText = "make friend";
-            status.innerText = "Unknown";
-            status.style.color = "red";
-            friend = 0;
-        }
+//         else {
+//             button.innerText = "make friend";
+//             status.innerText = "Unknown";
+//             status.style.color = "red";
+//             friend = 0;
+//         }
 
-    });
-});
+//     });
+// });

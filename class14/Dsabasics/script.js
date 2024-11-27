@@ -326,8 +326,8 @@ function sumOfDigits(num) {
 function reverseNumber(num) {
     let reversed = 0;
     while (num > 0) {
-        reversed = (reversed * 10) + (num % 10);
-        num = Math.floor(num/10);
+        reversed = (reversed * 10) + (num % 10); // add last digit to reversed
+        num = Math.floor(num/10);  // remove last digit
     }
     return reversed;
 }
