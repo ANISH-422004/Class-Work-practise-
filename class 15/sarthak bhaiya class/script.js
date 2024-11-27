@@ -18,6 +18,26 @@ const users = [
     {
         src: "https://plus.unsplash.com/premium_photo-1670573802857-aeae2b087487?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHBvdHJhaXR8ZW58MHx8MHx8fDA%3D",
         name: "John"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHBvcnRyYWl0fGVufDB8fDB8fHww",
+        name: "Emma"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fHBvcnRyYWl0fGVufDB8fDB8fHww",
+        name: "David"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fHBvcnRyYWl0fGVufDB8fDB8fHww",
+        name: "Sophia"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fHBvcnRyYWl0fGVufDB8fDB8fHww",
+        name: "Oliver"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fHBvcnRyYWl0fGVufDB8fDB8fHww",
+        name: "Isabella"
     }
 ];
 
@@ -30,7 +50,8 @@ function display(){
     clutter=``
     users.forEach((user,idx)=>{
         clutter+=`
-        <div id="overlay" style="opacity: 0; pointer-events: none;">
+        
+        <div id="overlay" >
         <img src="" alt="">
         <button id="close">close</button>
         </div>
@@ -53,23 +74,20 @@ let overlay = document.querySelector("#overlay");
 let close = document.querySelector("#close");
 let statusdiv = document.querySelectorAll(".statusdiv");
 
-statusdiv.forEach((user)=>{
-    user.addEventListener("click",(e)=>{
-        // console.log(e);
-        
-        let idx = e.target.id;
+
+main.addEventListener("click",(e)=>{
+    if(e.target.className === "statusdiv"){
+        let src = users[e.target.id].src;
+        console.log(src);
         overlay.style.opacity = 1;
         overlay.style.pointerEvents = "all";
-        overlay.querySelector("img").src = users[idx].src;
-    })
-})
+        overlay.querySelector("img").src = src;
 
+    }
+
+    
+})
 close.addEventListener("click",()=>{
-    overlay.style.opacity = 0;
-    overlay.style.pointerEvents = "none";
-})
-
-overlay.addEventListener("click",()=>{
-    overlay.style.opacity = 0;
-    overlay.style.pointerEvents = "none";
+  overlay.style.opacity = 0;
+  overlay.style.pointerEvents = "none";
 })

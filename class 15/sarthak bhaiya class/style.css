@@ -32,6 +32,7 @@ main #overlay {
   gap: 1rem;
   transition: ease all 0.2s;
   opacity: 0;
+  pointer-events: none;
 }
 main #overlay img {
   border-radius: 20px;
@@ -41,15 +42,15 @@ main #overlay img {
      object-fit: cover;
 }
 main .statusdiv {
-  width: 40%;
-  height: 100px;
+  width: 30%;
+  height: 60px;
   background-color: rgb(67, 199, 84);
   display: flex;
   align-items: center;
   gap: 10rem;
   padding: 1rem;
   border-radius: 20px;
-  margin: 1rem;
+  margin: 0.2rem;
 }
 main .statusdiv img {
   width: 50px;
