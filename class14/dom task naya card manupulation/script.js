@@ -12,8 +12,10 @@ let body = document.querySelector("body");
 
 
 function createCard(){
+    let c = ``
     users.forEach(function(user,idx){
         // console.log(user);
+    
         let card = `        <div class="card">
                                         <img src=${user.src} alt="">
                                         <h3>${user.name}</h3>
@@ -22,7 +24,8 @@ function createCard(){
                                         <button id="${idx}">make friend</button>
                             </div>     `
         
-        document.querySelector("main").innerHTML += card;
+        c += card;
+        document.querySelector("main").innerHTML = c
     })
 }
 createCard();
@@ -30,21 +33,24 @@ createCard();
 
 
 body.addEventListener("click",function(dets){
-    // console.log( );
-    if (users[dets.target.id].status == "Unknown"){
-        users[dets.target.id].status = "friend";
-        dets.target.innerText = "unfriend";
-        var h2 = dets.target.parentElement.querySelector("h2");
-        h2.innerText = "friend";
-        h2.style.color = "green";
-    }
-    else{
-        users[dets.target.id].status = "Unknown";
-        dets.target.innerText = "make friend";
-        var h2 = dets.target.parentElement.querySelector("h2");
-        h2.innerText = "Unknown";
-        h2.style.color = "red";
-    }
+   console.log(dets.target.innerText);
+        if (users[dets.target.id].status == "Unknown"){
+            users[dets.target.id].status = "friend";
+            dets.target.textContent = "unfriend";
+            var h2 = dets.target.parentElement.querySelector("h2");
+            h2.textContent = "friend";
+            h2.style.color = "green";
+        }
+        else {
+            users[dets.target.id].status = "Unknown";
+            dets.target.textContent = "make friend"; // Fixed typo
+            var h2 = dets.target.parentElement.querySelector("h2");
+            h2.textContent = "Unknown";
+            h2.style.color = "red";
+        }
+        
+    
+
     createCard();
     
 });
