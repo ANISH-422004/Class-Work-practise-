@@ -78,7 +78,7 @@ let statusdiv = document.querySelectorAll(".statusdiv");
 main.addEventListener("click",(e)=>{
     if(e.target.className === "statusdiv"){
         let src = users[e.target.id].src;
-        console.log(src);
+        // console.log(src);
         overlay.style.opacity = 1;
         overlay.style.pointerEvents = "all";
         overlay.querySelector("img").src = src;

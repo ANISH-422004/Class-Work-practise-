@@ -111,7 +111,7 @@
 
 
 
-
+  
 
 
 
@@ -125,6 +125,7 @@
 
 // unit is the number of electricity units consumed.
 // amount starts at 0 and will accumulate the total payable amount.
+
 // Top-Tier Check:
 
 // If the units exceed 400, the excess units (above 400) are billed at 13 per unit, and those units are removed from further calculation (unit is reduced to 400).
@@ -204,6 +205,8 @@
 
 
 
+
+
 //Q17. Sum of N natural number 
     // you are asked to print sum of first n natural number 
     // OP : 1+2+3+4+5+6+7+8+9+10 = 55
@@ -214,6 +217,9 @@
 //     sum += i;
 // }
 // console.log(`sum of first ${n} natural number is ${sum}`);
+
+
+
 
 
 
@@ -228,6 +234,10 @@
 
 
 
+
+
+
+
 // Q19. Prime number
 // write a program to check if a number is prime or not 
 
@@ -239,7 +249,7 @@
 //     console.log(`${n} is not a prime number`);
 // }
 // else{
-//     for (let i = 2; i < n; i++){
+//     for (let i = 2; i <= n/2; i++){ // why n/2 ? ans : this is because for any number  n , any factor greater than n/2 (other than n itself) cannot divide n evenly.
 //         if (n % i === 0){
 //             countoffactor++;
 //            }
@@ -253,6 +263,8 @@
 //     }
     
 // }
+
+
 
 
 

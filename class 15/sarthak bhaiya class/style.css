@@ -47,7 +47,7 @@ main .statusdiv {
   background-color: rgb(67, 199, 84);
   display: flex;
   align-items: center;
-  gap: 10rem;
+  gap: 5rem;
   padding: 1rem;
   border-radius: 20px;
   margin: 0.2rem;
