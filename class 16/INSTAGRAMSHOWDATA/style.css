@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+}
+
+nav {
+  background-color: rgb(255, 255, 255);
+  padding: 0px 10px;
+  font-size: 24px;
+  width: 100%;
+  height: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+footer {
+  width: 100%;
+  height: 8%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+footer i {
+  font-size: 24px;
+  color: #262626;
+  padding: 0px 10px;
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    padding-top: 10%;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+  }
+  main .post-container {
+    width: 100%;
+    height: 80%;
+    background-color: rgb(255, 255, 255);
+  }
+  main .post-container #post-template {
+    width: 100%;
+    height: 100%;
+  }
+  main .post-container #post-template #top {
+    padding: 0px 10px;
+    width: 100%;
+    height: 10%;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  main .post-container #post-template #top img {
+    width: 32px;
+    height: 32px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 50%;
+    margin-right: 12px;
+  }
+  main .post-container #post-template #top #user-info {
+    flex: 1;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  main .post-container #post-template #top #user-info h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  main .post-container #post-template #top #user-info span {
+    font-size: 12px;
+    color: #8e8e8e;
+  }
+  main .post-container #post-template #top i {
+    font-size: 24px;
+    color: #262626;
+  }
+  main .post-container #post-template #post-image {
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
+  main .post-container #post-template #post-image img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  main .post-container #post-template #post-icons {
+    padding: 0px 10px;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  main .post-container #post-template #caption {
+    padding: 0px 10px;
+    font-size: 14px;
+    font-weight: 400;
+    width: 100%;
+    height: 8%;
+  }
+  main .post-container #post-template #time-ago {
+    padding: 0px 10px;
+    width: 100%;
+    height: auto;
+    font-size: 14px;
+    color: #8e8e8e;
+  }
+}/*# sourceMappingURL=style.css.map */
