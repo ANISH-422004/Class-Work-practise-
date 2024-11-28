@@ -29,3 +29,4 @@ page1.addEventListener('click', function (event) {
     }
 });
 
+// this is done
