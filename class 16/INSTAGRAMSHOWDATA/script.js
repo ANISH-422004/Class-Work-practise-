@@ -109,7 +109,7 @@ let body = document.querySelector("body");
 let main = document.querySelector("main");
 let statusbar = document.querySelector("#statusbar");
 let modal = document.querySelector("#modal");
-
+let bigHeart
 
 function showData(){
     clutter = ``
@@ -131,6 +131,7 @@ function showData(){
 
                 <div id="post-image">
                     <img id="${idx}"src="${item.userPost}" alt="">
+                    <i id="post-image-icon" class="ri-heart-fill"></i>
                 </div>
 
 
@@ -219,6 +220,7 @@ function likePostfromImage(){
 
         main.addEventListener("dblclick", (e) => {
             // Check if clicked element is a post image
+            
             if (e.target.closest("#post-image")) {
                 
                 // Get the index from the image id
@@ -231,6 +233,8 @@ function likePostfromImage(){
                     data[index].likeCount ++;
                 }
                 showData();
+
+                
             }
 
 });

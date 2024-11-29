@@ -33,13 +33,17 @@
 //4. if user provides any other number then repeat the loop
 
 
-// let i  
-// do {
+
+// let i 
+// do{
 //     console.log('hello');
-//     i = Number(prompt('press 1 to repeat'))
+//     console.log('press 1 to repeat');
+//     i = Number(prompt('enter your choice'))
 // }while(i!==0)
 
 // console.log('program exit');
+
+
 
 
 
@@ -98,4 +102,4 @@
 // }while(i!==0)
 // console.log('program exited');
 
-
+// 
