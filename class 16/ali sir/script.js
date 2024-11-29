@@ -121,7 +121,7 @@
 //fibonacci series is a series in which each number is the sum of the two preceding ones
 //for example 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...
 
-// let n = 1;
+// let n = 6;
 // let a = 0;
 // let b = 1;
 
@@ -137,3 +137,16 @@
 //     b = c;
 // }
 
+
+//Q27. repeated hellow : write a program that repeatedly prints "hello" until user provides incorrect input using do while loop
+// let n = 1 
+// do {
+//     console.log("hello");
+//     console.log('press 1 to repeat')
+//     p = Number(prompt("number"))
+    
+// }while(p===n){
+//     console.log('press 1 to repeat');
+    
+// }
+// console.log('program exit');
