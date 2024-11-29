@@ -109,9 +109,12 @@ let body = document.querySelector("body");
 let main = document.querySelector("main");
 let statusbar = document.querySelector("#statusbar");
 let modal = document.querySelector("#modal");
+
+
 function showData(){
     clutter = ``
-    data.forEach(item => {
+    data.forEach((item,idx) => {
+        // console.log(idx);
         clutter += `
     
             <div class="post-container">
@@ -127,13 +130,13 @@ function showData(){
                 </div>
 
                 <div id="post-image">
-                    <img src="${item.userPost}" alt="">
+                    <img id="${idx}"src="${item.userPost}" alt="">
                 </div>
 
 
                 <div id="post-icons">
-                    <div class="like">
-                        <i class="ri-heart-line"></i>
+                    <div class="like" id="${idx}">
+                        ${item.like ? `<i class="ri-heart-fill" style= "color: red;"></i>` : `<i class="ri-heart-line"></i>`}
                         <span>${item.likeCount}</span>
                     </div>
                     <div class="comment">
@@ -182,34 +185,82 @@ function showStatusBar(){
 showStatusBar();
 
 
+function showModal(){
+    let statusbarItemimage = document.querySelectorAll(".status-bar-item img");
 
-
-
-
-
-let statusbarItemimage = document.querySelectorAll(".status-bar-item img");
-
-statusbarItemimage.forEach(item => {
-    item.addEventListener("click", () => {
-        modal.style.display = "flex";
-        statusbar.style.pointerEvents = "none";
-   
-        modal.querySelector("img").src = item.src;
+    statusbarItemimage.forEach(item => {
+        item.addEventListener("click", () => {
+            modal.style.display = "flex";
+            statusbar.style.pointerEvents = "none";
+       
+            modal.querySelector("img").src = item.src;
+            
+            setTimeout(() => {
+                modal.style.display = "none";
+                statusbar.style.pointerEvents = "auto";
+            }, 5000);
         
-        setTimeout(() => {
-            modal.style.display = "none";
-            statusbar.style.pointerEvents = "auto";
-        }, 5000);
+        })
+    
     
     })
+    
+    modal.addEventListener("click", (e) => {
+        if (e.target !== modal.querySelector("img")) {
+            modal.style.display = "none";
+            statusbar.style.pointerEvents = "auto";
+        }
+    })
+    
+}
+showModal();
+
+function likePostfromImage(){
+
+        main.addEventListener("dblclick", (e) => {
+            // Check if clicked element is a post image
+            if (e.target.closest("#post-image")) {
+                
+                // Get the index from the image id
+                const index = e.target.id;
+                if(data[index].like){
+                    data[index].like = false;
+                    data[index].likeCount --;
+                } else {
+                    data[index].like = true;
+                    data[index].likeCount ++;
+                }
+                showData();
+            }
+
+});
+}
+likePostfromImage();
+//double click to like post from image is not working on inspectmode in chrome browser
+//but working on normal screen of browser and phone screen too
+
+function likePostfromIcon(){
+    main.addEventListener("click", (e) => {
+
+        
+        if(e.target.closest("#post-icons .like")){
+            // console.log(e.target.closest("#post-icons .like"));
+            var likediv = e.target.closest("#post-icons .like");
+            const idx = likediv.id;
+            if(data[idx].like){
+                data[idx].like = false;
+                data[idx].likeCount --;
+            }   
+            else{
+                data[idx].like = true;
+                data[idx].likeCount ++;
+            }
+            // console.log(data[idx]);
+            showData();
+        }
 
 
-})
-
-modal.addEventListener("click", (e) => {
-    if (e.target !== modal.querySelector("img")) {
-        modal.style.display = "none";
-        statusbar.style.pointerEvents = "auto";
-    }
-})
+    }); 
+}
+likePostfromIcon();
 

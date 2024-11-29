@@ -52,7 +52,7 @@ nav{
     align-items: center;
     padding: 0 16px;
     gap: 10px;
-    margin-top: 46px;
+    margin-top: 38px;
     position: fixed;
     overflow-x: scroll;
     border-bottom: 1px solid #dbdbdb;
@@ -92,14 +92,16 @@ nav{
 @media screen and (max-width: 600px) {
 
     main{
-        padding-top: 35%;
+        padding-top: 20%;
         width: 100%;
         height: 100%;
         background-color: rgb(255, 255, 255);
         .post-container{
             width: 100%;
-            height: 80%;
+            height: auto;
             background-color: rgb(255, 255, 255);
+            margin-top: 40px;
+
             #post-template{
                 width: 100%;
                 height: 100%;
