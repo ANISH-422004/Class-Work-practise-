@@ -217,53 +217,50 @@ function showModal(){
 showModal();
 
 function likePostfromImage(){
-
-        main.addEventListener("dblclick", (e) => {
-            // Check if clicked element is a post image
+    main.addEventListener("dblclick", (e) => {
+        // Check if clicked element is an image within post-image div
+        if (e.target.tagName === "IMG" && e.target.parentElement.id === "post-image") {
+            const idx = e.target.id;
             
-            if (e.target.closest("#post-image")) {
-                
-                // Get the index from the image id
-                const index = e.target.id;
-                if(data[index].like){
-                    data[index].like = false;
-                    data[index].likeCount --;
-                } else {
-                    data[index].like = true;
-                    data[index].likeCount ++;
-                }
-                showData();
-
-                
+            if(data[idx].like){
+                data[idx].like = false;
+                data[idx].likeCount--;
+            } else {
+                data[idx].like = true;
+                data[idx].likeCount++;
             }
-
-});
+            showData();
+        }
+    });
 }
 likePostfromImage();
+
+//e.target.tagName === "IMG" - This checks if the clicked element is an image, but this alone could match ANY image in the post (like profile pictures or other images)
+//e.target.parentElement.id === "post-image" - This ensures we're specifically targeting images within the post content area, not other images like profile pictures or status bar images
+
+
+
+
 //double click to like post from image is not working on inspectmode in chrome browser
 //but working on normal screen of browser and phone screen too
 
 function likePostfromIcon(){
     main.addEventListener("click", (e) => {
-
-        
-        if(e.target.closest("#post-icons .like")){
-            // console.log(e.target.closest("#post-icons .like"));
-            var likediv = e.target.closest("#post-icons .like");
+        // Check if clicked element is inside like div (either the icon or the count)
+        if((e.target.tagName === 'I' || e.target.tagName === 'SPAN') && 
+           e.target.parentElement.classList.contains('like')) {
+            const likediv = e.target.parentElement;
             const idx = likediv.id;
+            
             if(data[idx].like){
                 data[idx].like = false;
-                data[idx].likeCount --;
-            }   
-            else{
+                data[idx].likeCount--;
+            } else {
                 data[idx].like = true;
-                data[idx].likeCount ++;
+                data[idx].likeCount++;
             }
-            // console.log(data[idx]);
             showData();
         }
-
-
     }); 
 }
 likePostfromIcon();
