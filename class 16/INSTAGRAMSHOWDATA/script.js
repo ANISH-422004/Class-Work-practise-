@@ -131,7 +131,7 @@ function showData(){
 
                 <div id="post-image">
                     <img id="${idx}"src="${item.userPost}" alt="">
-                    <i id="post-image-icon" class="ri-heart-fill"></i>
+                    <i class="ri-heart-fill" style= "color: red;"></i>
                 </div>
 
 
@@ -231,6 +231,13 @@ function likePostfromImage(){
             }
             showData();
         }
+        
+        // let showheart = document.querySelector(".ri-heart-fill");
+        // showheart.style.animation = "scale-up 0.6s ease-in-out";
+        // setTimeout(() => {
+        //     showheart.style.transform = "translate(-50%, -50%) scale(0)";
+        // }, 1800);
+
     });
 }
 likePostfromImage();
@@ -264,4 +271,5 @@ function likePostfromIcon(){
     }); 
 }
 likePostfromIcon();
+
 
