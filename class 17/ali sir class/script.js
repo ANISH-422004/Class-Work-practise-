@@ -102,4 +102,36 @@
 // }while(i!==0)
 // console.log('program exited');
 
-// 
+
+
+//Q29. Guess the number game : write a program that generates a random number and asks the user to guess it.
+// if the guess is correct then print "you win" and exit the program
+// if it greater than the random number then print "too high" and ask the user to guess again
+// if it is less than the random number then print "too low" and ask the user to guess again
+// the user has unlimited chances to guess the number
+// if the user fails to guess the number then print "you lose" and exit the program
+
+// // Generate a random number between 1 and 100
+// const target = Math.floor(Math.random() * 100) + 1;
+// console.log(target);
+
+// let guess = 0; // Variable to store the user's guess
+
+// // Start the guessing loop
+// while (guess !== target) {
+//   // Prompt user for their guess
+//   guess = parseInt(prompt("Guess the number (1-100):"), 10);
+
+//   // Compare the guess with the target number
+//   if (guess === target) {
+//     alert("Congrats! You guessed the correct number.");
+//   } else if (guess > target) {
+//     alert("Too high, try again.");
+//   } else {
+//     alert("Too low, try again.");
+//   }
+// }
+
+
+
+///Using Do while Loop
