@@ -109,6 +109,9 @@ let body = document.querySelector("body");
 let main = document.querySelector("main");
 let statusbar = document.querySelector("#statusbar");
 let modal = document.querySelector("#modal");
+let postContainer= document.querySelector('main .post-container')
+// console.log(postContainer);
+
 let bigHeart
 
 function showData(){
@@ -193,13 +196,15 @@ function showModal(){
         item.addEventListener("click", () => {
             modal.style.display = "flex";
             statusbar.style.pointerEvents = "none";
+            main.style.position = "fixed";
        
             modal.querySelector("img").src = item.src;
             
             setTimeout(() => {
                 modal.style.display = "none";
                 statusbar.style.pointerEvents = "auto";
-            }, 5000);
+                main.style.position = "static";
+            }, 3000);
         
         })
     
@@ -210,6 +215,8 @@ function showModal(){
         if (e.target !== modal.querySelector("img")) {
             modal.style.display = "none";
             statusbar.style.pointerEvents = "auto";
+            main.style.pointerEvents = "auto";
+            main.style.position = "static";
         }
     })
     
@@ -232,11 +239,13 @@ function likePostfromImage(){
             showData();
         }
         
-        // let showheart = document.querySelector(".ri-heart-fill");
-        // showheart.style.animation = "scale-up 0.6s ease-in-out";
-        // setTimeout(() => {
-        //     showheart.style.transform = "translate(-50%, -50%) scale(0)";
-        // }, 1800);
+        console.log(e.target.parentElement.querySelector("i"))
+        let showheart = e.target.parentElement.querySelector("i");
+        
+        showheart.style.animation = "scale-up 0.6s ease-in-out";
+        setTimeout(() => {
+            showheart.style.transform = "translate(-50%, -50%) scale(0)";
+        }, 1800);
 
     });
 }
