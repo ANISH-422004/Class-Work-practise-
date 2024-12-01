@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-color: crimson;
+}
+main img {
+  position: absolute;
+  width: 6rem;
+  top: 0%;
+  left: 0%;
+  height: 6rem;
+  display: block;
+  transition: all linear 0.2s;
+  z-index: 3;
+}
+main #black {
+  width: 280px;
+  height: 280px;
+  background-color: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 90%;
+  left: 90%;
+  transform: translate(-50%, -80%);
+}
+main button {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}/*# sourceMappingURL=style.css.map */
