@@ -191,3 +191,100 @@
 
 
 
+//Q37. pattern x
+// *               *
+//   *           *  
+//     *       *
+//       *   *
+//         *
+//       *    *
+//     *        *
+//   *            *
+// *                *
+
+
+
+
+
+
+//Q37. Sum of Array Elements
+// Write a program that accepts the size of an array n from the user, creates an array nums of size n, takes n inputs into the array, and then prints the sum and mean of all elements.
+
+// let n = Number(prompt("Enter the size of the array"))
+// let numx = []
+// for (var i=0 ; i<n ; i++){
+//     numx.push(Number(prompt("Enter the element")))
+// }
+// let sum = 0
+// for (var i=0 ; i<numx.length ; i++){
+//     sum += numx[i]
+// }
+// console.log(`Sum of the array is ${sum}`)
+// console.log(`Mean of the array is ${sum/n}`)
+
+
+//Q38. Greatest in Array
+// Write a program to find the greatest element in a given array and print its index.
+
+// let n = Number(prompt("Enter the size of the array"))
+// let numx = []
+// for (var i=0 ; i<n ; i++){
+//     numx.push(Number(prompt("Enter the element")))
+// }
+// console.log(numx)
+
+// let max = numx[0]
+// for (var i=0 ; i<numx.length ; i++){
+//     if (numx[i] > max){
+//         max = numx[i]
+//     }
+// }
+// console.log(`Greatest element in the array is ${max}`)
+
+
+//Q39.Second Greatest in Array
+//Create a program to find the second greatest element in a given array.
+
+// let n = Number(prompt("Enter the size of the array"))
+// let numx = []
+// for (var i=0 ; i<n ; i++){
+//     numx.push(Number(prompt("Enter the element")))
+// }
+// console.log(numx)
+
+
+// let max = numx[0]
+// let secondlastmax = numx[0]
+ 
+// for (var i = 0 ; i<numx.length ; i++){
+//     if (numx[i] > max){
+//         secondlastmax = max
+//         max = numx[i]
+//     }
+// }
+// console.log(`Second greatest element in the array is ${secondlastmax}`)
+
+ 
+//Q40. Is Array Sorted?
+// Write a program to check if an array is sorted in ascending order.
+
+// let n = Number(prompt("Enter the size of the array"))
+// let numx = []
+// for (var i=0 ; i<n ; i++){
+//     numx.push(Number(prompt("Enter the element")))
+// }
+// console.log(numx)
+
+
+// let last = numx[0]
+// let next = numx[0]
+
+// for (var i=0 ; i<numx.length ; i++){
+//     last  = next
+//     next = numx[i+1]
+//     if (last > next){
+//         console.log("Array is not sorted")
+//         break
+//     }
+// }
+// console.log("Array is sorted")
