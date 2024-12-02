@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  transition: all ease 0.1s;
+}
+
+img {
+  width: 300px;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: royalblue;
+  border: none;
+  cursor: pointer;
+}
+button:active {
+  transform: scale(0.9);
+  background-color: rgb(76, 76, 196);
+}/*# sourceMappingURL=style.css.map */

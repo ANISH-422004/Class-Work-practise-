@@ -10,14 +10,14 @@ html,body{
 }
 .parent{
     width: 100%;
-    height: 150px;
+    height: 20%;
     border-bottom: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
     padding: 0 5%;
-    // transition: all linear 0.2s;
+    transition: all linear 0.2s;
     h1{
         font-size: 60px;
     }
@@ -27,7 +27,7 @@ html,body{
         color: rgb(100, 100, 100);
     }
     img{
-        transition: all ease 0.3s;
+        transition: all ease 0.1s;
         position: absolute;
         width:6%;
         aspect-ratio: 1/1;
