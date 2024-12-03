@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: royalblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+body nav {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+}
+body nav #numbertoclick {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  background-color: rgb(221, 144, 93);
+  padding: 10px;
+  border-radius: 10px;
+}
+body nav #time {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: rgb(221, 144, 93);
+  padding: 10px;
+  border-radius: 10px;
+}
+body nav #score {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: rgb(221, 144, 93);
+  padding: 10px;
+  border-radius: 10px;
+}
+body #bubble-container {
+  background-color: rgb(173, 94, 41);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 80%;
+  height: 80%;
+}
+body .bubble {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bold;
+}/*# sourceMappingURL=style.css.map */
