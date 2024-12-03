@@ -1,57 +1,74 @@
+let  numbertoclickValue =  document.querySelector("#numbertoclick-value")
+let  timeValue =  document.querySelector("#time-value")
+let bubbelContainer = document.querySelector("#bubble-container")
+let score = document.querySelector("#score-value")
+// console.log(score);
+let bubbles = document.querySelectorAll(".bubble")
+console.log(bubbelContainer);
+let resetbtn = document.querySelector('#reset')
 
-var numbertoclick = document.getElementById("numbertoclick");
-var time = document.getElementById("time");
-var score = document.getElementById("score");
-var bubbleContainer = document.querySelector('#bubble-container');
-// console.log(numbertoclick,time,score);
-// console.log(time.querySelector("#time-value").textContent);
-function renderbubble(){
-    clutter=`
-    `
-    for (let i = 0; i < 30; i++) {
-        clutter+=`<div class="bubble">${Math.floor(Math.random()*9+1)}</div>`
-    }
-    bubbleContainer.innerHTML=clutter;
+function bubblenumberset(){
+    bubbles.forEach(function(bubble){
+        // console.log(bubble.innerText);
+        bubble.innerText = `${Math.floor(Math.random()*9 +1)}`
+    })
 }
-renderbubble()
-function getNewNumber(){
-    let randomNumber = Math.floor(Math.random()*9+1);
-    numbertoclick.querySelector("#numbertoclick-value").textContent = randomNumber;
-    return randomNumber;
+bubblenumberset();
+
+function targetsetting(){
+    numbertoclickValue.innerText = `${Math.floor(Math.random()*9 +1)}` 
 }
-function Game() {
-    
-    let targetNumber = getNewNumber();
-    
-    
-    var timer = setInterval(() => {
-        let currentTime = parseInt(time.querySelector("#time-value").textContent);
-        if (currentTime <= 1) {
-            clearInterval(timer);
-            time.querySelector("#time-value").textContent = "0";
-            endGame();
-        } else {
-            time.querySelector("#time-value").textContent = currentTime - 1;
-        }
-    }, 1000);
-    function handleBubbleClick(e) {
-        if (e.target.classList.contains('bubble')) {
-            if (e.target.textContent == targetNumber) {
-                document.querySelector("#score-value").textContent = 
-                    parseInt(document.querySelector("#score-value").textContent) + 1;
+targetsetting()
+
+
+
+function game(){
+
+    bubbelContainer.addEventListener("click",function(dets){    
+        // console.log(dets.target.className);
+        if(dets.target.className==="bubble"){
+            // console.log("ojk");
+            console.log(parseInt(dets.target.innerText , 10));
+            if(parseInt(dets.target.innerText , 10)===parseInt(numbertoclickValue.innerText,10)){
+                console.log('true');
+                score.innerHTML = parseInt(score.innerHTML,10) + 1
+                targetsetting()
+                bubblenumberset();
+
+                
             }
-            renderbubble();
-            targetNumber = getNewNumber();
+            else{
+                console.log('flase');
+                targetsetting()
+                bubblenumberset();
+            }
+            
         }
-    }
-    // End game function
-    function endGame() {
-        let score = parseInt(document.querySelector("#score-value").textContent);
-        bubbleContainer.removeEventListener('click', handleBubbleClick);
-        alert("Game Over! Your score: " + score);
-    }
-    // Add single event listener
-    bubbleContainer.addEventListener('click', handleBubbleClick);
+        
+
+    })
 }
-Game()
+game()
+
+
+function timmer (){
+  let count = 60 
+  let countdown = setInterval(function(){
+      count--
+    //   console.log(count);
+      timeValue.innerText = count
+      
+    if(count===0){
+        clearInterval(countdown)
+        timeValue.innerHTML = `time over` 
+        // alert( ` game over , your sorce is ${}`)
+        bubbelContainer.style.pointerEvents=  "none";
+        bubbelContainer.innerHTML=  `<h1 style="color : yellow ">your game is over and your score is ${score.innerText}</h1> `;
+
+    }
+
+},1000)
+}
+timmer()
+
 
