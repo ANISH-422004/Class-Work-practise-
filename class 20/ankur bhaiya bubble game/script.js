@@ -1,13 +1,10 @@
+
 var numbertoclick = document.getElementById("numbertoclick");
 var time = document.getElementById("time");
 var score = document.getElementById("score");
 var bubbleContainer = document.querySelector('#bubble-container');
-
-
 // console.log(numbertoclick,time,score);
 // console.log(time.querySelector("#time-value").textContent);
-
-
 function renderbubble(){
     clutter=`
     `
@@ -17,13 +14,11 @@ function renderbubble(){
     bubbleContainer.innerHTML=clutter;
 }
 renderbubble()
-
 function getNewNumber(){
     let randomNumber = Math.floor(Math.random()*9+1);
     numbertoclick.querySelector("#numbertoclick-value").textContent = randomNumber;
     return randomNumber;
 }
-
 function Game() {
     
     let targetNumber = getNewNumber();
@@ -38,9 +33,7 @@ function Game() {
         } else {
             time.querySelector("#time-value").textContent = currentTime - 1;
         }
-    }, 10);
-
-
+    }, 1000);
     function handleBubbleClick(e) {
         if (e.target.classList.contains('bubble')) {
             if (e.target.textContent == targetNumber) {
@@ -51,17 +44,14 @@ function Game() {
             targetNumber = getNewNumber();
         }
     }
-
     // End game function
     function endGame() {
         let score = parseInt(document.querySelector("#score-value").textContent);
         bubbleContainer.removeEventListener('click', handleBubbleClick);
         alert("Game Over! Your score: " + score);
     }
-
     // Add single event listener
     bubbleContainer.addEventListener('click', handleBubbleClick);
 }
 Game()
-
 
