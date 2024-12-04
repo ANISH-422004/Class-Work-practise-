@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: sans-serif;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main #clock {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+main #clock .num {
+  height: 50%;
+  position: absolute;
+  font-size: 30px;
+  font-weight: 600;
+}
+main #clock #num1 {
+  transform: rotate(30deg);
+}
+main #clock #num2 {
+  transform: rotate(60deg);
+}
+main #clock #num3 {
+  transform: rotate(90deg);
+}
+main #clock #num4 {
+  transform: rotate(120deg);
+}
+main #clock #num5 {
+  transform: rotate(150deg);
+}
+main #clock #num6 {
+  transform: rotate(180deg);
+}
+main #clock #num7 {
+  transform: rotate(210deg);
+}
+main #clock #num8 {
+  transform: rotate(240deg);
+}
+main #clock #num9 {
+  transform: rotate(270deg);
+}
+main #clock #num10 {
+  transform: rotate(300deg);
+}
+main #clock #num11 {
+  transform: rotate(330deg);
+}
+main #clock #num12 {
+  transform: rotate(360deg);
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+}
+
+main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    #clock{
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        border: 1px solid black;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+        .num{
+            height: 50%;
+            position: absolute;
+            font-size: 30px;
+            font-weight: 600;
+        }
+        #num1{
+            transform: rotate(30deg);  // roated 30 deg and by default origin is center of div
+        }
+        #num2{  
+            transform: rotate(60deg);
+        }
+        #num3{
+            transform: rotate(90deg);
+        }
+        #num4{
+            transform: rotate(120deg);
+        }
+        #num5{
+            transform: rotate(150deg);
+        }
+        #num6{
+            transform: rotate(180deg);
+        }
+        #num7{
+            transform: rotate(210deg);
+        }
+        #num8{
+            transform: rotate(240deg);
+        }
+        #num9{
+            transform: rotate(270deg);
+        }
+        #num10{
+            transform: rotate(300deg);
+        }
+        #num11{
+            transform: rotate(330deg);
+        }
+        #num12{
+            transform: rotate(360deg);
+        }
+
+    }
+}
+
