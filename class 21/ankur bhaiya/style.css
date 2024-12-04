@@ -37,36 +37,84 @@ main #clock .num {
 main #clock #num1 {
   transform: rotate(30deg);
 }
+main #clock #num1 span {
+  position: absolute;
+  transform: rotate(-30deg);
+}
 main #clock #num2 {
   transform: rotate(60deg);
+}
+main #clock #num2 span {
+  position: absolute;
+  transform: rotate(-60deg);
 }
 main #clock #num3 {
   transform: rotate(90deg);
 }
+main #clock #num3 span {
+  position: absolute;
+  transform: rotate(-90deg);
+}
 main #clock #num4 {
   transform: rotate(120deg);
+}
+main #clock #num4 span {
+  position: absolute;
+  transform: rotate(-120deg);
 }
 main #clock #num5 {
   transform: rotate(150deg);
 }
+main #clock #num5 span {
+  position: absolute;
+  transform: rotate(-150deg);
+}
 main #clock #num6 {
   transform: rotate(180deg);
+}
+main #clock #num6 span {
+  position: absolute;
+  transform: rotate(-180deg);
 }
 main #clock #num7 {
   transform: rotate(210deg);
 }
+main #clock #num7 span {
+  position: absolute;
+  transform: rotate(-210deg);
+}
 main #clock #num8 {
   transform: rotate(240deg);
+}
+main #clock #num8 span {
+  position: absolute;
+  transform: rotate(-240deg);
 }
 main #clock #num9 {
   transform: rotate(270deg);
 }
+main #clock #num9 span {
+  position: absolute;
+  transform: rotate(-270deg);
+}
 main #clock #num10 {
   transform: rotate(300deg);
+}
+main #clock #num10 span {
+  position: absolute;
+  transform: rotate(-300deg);
 }
 main #clock #num11 {
   transform: rotate(330deg);
 }
+main #clock #num11 span {
+  position: absolute;
+  transform: rotate(-330deg);
+}
 main #clock #num12 {
   transform: rotate(360deg);
+}
+main #clock #num12 span {
+  position: absolute;
+  transform: rotate(-360deg);
 }/*# sourceMappingURL=style.css.map */
