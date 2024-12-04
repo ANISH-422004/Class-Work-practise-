@@ -124,25 +124,36 @@ main{
         border-radius: 50%;
         background-color: rgba(94, 81, 81, 0.311);
         position: absolute;
+        #center{
+            width: 10px;
+            height: 10px;
+            background-color: rgb(255, 255, 255);
+            border: 3px solid black;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }   
         #hour{
-            width: 5px;
+            width: 8px;
             height:40%;
             background-color: black;
             position: absolute;
             transform-origin: bottom;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%,-50%);
             bottom: 50%;
             transform: rotate(0deg);
             border-radius: 10px;
         }
         #minute{
-            width: 5px;
+            width: 4px;
             height: 45%;
             position: absolute;
             transform-origin: bottom;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%,-50%);
             bottom: 50%;
             background-color: rgb(202, 109, 109);
             transform: rotate(0deg);
@@ -154,7 +165,7 @@ main{
             position: absolute;
             transform-origin: bottom;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%,-50%);
             bottom: 50%;
             background-color: rgb(22, 227, 91);
             transform: rotate(0deg);
