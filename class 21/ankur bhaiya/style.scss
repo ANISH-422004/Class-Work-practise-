@@ -126,15 +126,29 @@ main{
         position: absolute;
         #hour{
             width: 5px;
-            height:50%;
+            height:40%;
             background-color: black;
             position: absolute;
             transform-origin: bottom;
             left: 50%;
             transform: translateX(-50%);
             bottom: 50%;
+            transform: rotate(0deg);
+            border-radius: 10px;
         }
         #minute{
+            width: 5px;
+            height: 45%;
+            position: absolute;
+            transform-origin: bottom;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 50%;
+            background-color: rgb(202, 109, 109);
+            transform: rotate(0deg);
+            border-radius: 10px;
+        }
+        #second{
             width: 3px;
             height: 50%;
             position: absolute;
@@ -142,17 +156,9 @@ main{
             left: 50%;
             transform: translateX(-50%);
             bottom: 50%;
-            background-color: rgb(202, 109, 109);
-        }
-        #second{
-            width: 1px;
-            height: 50%;
-            position: absolute;
-            transform-origin: bottom;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: 50%;
             background-color: rgb(22, 227, 91);
+            transform: rotate(0deg);
+            border-radius: 10px;
         }
     }
 
