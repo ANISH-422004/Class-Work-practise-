@@ -61,3 +61,5 @@
 // var {name,age,city,...details} = obj;
 // console.log(details);
 
+
+
