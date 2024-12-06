@@ -14,7 +14,7 @@ const Cards = () => {
     ]
 
   return (
-    <div className='p-4 mt-10 flex gap-10 overflow-x-auto object-cover'>
+    <div className='carddiv p-4 mt-10 flex gap-10 overflow-x-auto object-cover'>
 {
             imgs.map((img)=>{
                 return(
