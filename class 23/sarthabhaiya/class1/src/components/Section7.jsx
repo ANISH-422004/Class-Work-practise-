@@ -54,7 +54,7 @@ const Section7 = () => {
                 </div>
                 <div id="bottomIN" className='h-[50%] bg-[#36A96A]  text-white flex flex-col justify-center items-center gap-8 transition-all duration-500 overflow-hidden  group-hover:rounded-[5em] py-4'>
                          <h4 className='w-[60%]'>
-                            Brand Story
+                            Web Desgine
                          </h4>
                          <p className='w-[60%]'>
                             Together we create a strong foundation for an irresistible design.
@@ -68,7 +68,7 @@ const Section7 = () => {
                 </div>
                 <div id="bottomIN" className='h-[50%] bg-[#FA8A58]  text-white flex flex-col justify-center items-center gap-8 transition-all duration-500 overflow-hidden  group-hover:rounded-[5em] py-4'>
                          <h4 className='w-[60%]'>
-                            Brand Story
+                            A la crate
                          </h4>
                          <p className='w-[60%]'>
                             Together we create a strong foundation for an irresistible design.
