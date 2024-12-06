@@ -32,7 +32,7 @@ const Section6 = () => {
                                 <div id="top" className='group h-[100%] flex justify-center relative'>
                                                 <div id="imagecontainer" className=' w-[97%] h-[100%] flex items-center justify-center rounded-[2rem] group-hover:rounded-[10rem] object-cover overflow-hidden transition-all duration-500'>
                                                         
-                                                            <img  className=' h-[100%] aspect-square  rounded-xl transition-all duration-500 hover:scale-125 ' src="https://cdn.prod.website-files.com/648884be5f32a12e5da2392f/64bbb716dc15a767d726cdea_DM_header-p-1600.jpg" alt="" />
+                                                            <img  className=' h-[100%] aspect-square  rounded-xl transition-all duration-500 scale-125 hover:scale-150 ' src="https://cdn.prod.website-files.com/648884be5f32a12e5da2392f/64bbb716dc15a767d726cdea_DM_header-p-1600.jpg" alt="" />
                                                     
                                                 </div>
                                                 
