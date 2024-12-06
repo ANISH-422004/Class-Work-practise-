@@ -8,7 +8,7 @@ const Section4 = () => {
         <h1 className='text-8xl font-bold uppercase text-center w-[80%]' > Head Turning Projects </h1>
 
         <div>
-            <h3 className='bg-yellow-500 p-4 rounded-3xl absolute top-[70%] left-[58%] -rotate-12'>Gotta see 'm all</h3>
+            <h3 className='bg-yellow-500 p-4 rounded-3xl absolute top-[74%] left-[58%] -rotate-12'>Gotta see 'm all</h3>
         </div>
 
     

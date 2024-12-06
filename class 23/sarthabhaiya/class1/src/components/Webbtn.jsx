@@ -7,4 +7,4 @@ const Webbtn = () => {
   )
 }
 
-export default Webbtn
+export default Webbtn;
