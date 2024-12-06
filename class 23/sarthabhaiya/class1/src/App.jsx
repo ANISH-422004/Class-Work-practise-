@@ -5,6 +5,7 @@ import Cards from './components/cards'
 import Section3 from './components/Section3'
 import Section4 from './components/Section4'
 import Section5 from './components/Section5'
+import Boxtext from './components/Boxtext'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Section3/>
       <Section4/>
       <Section5/>
+      
     </div>
   )
 }
