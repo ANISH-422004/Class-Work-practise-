@@ -4,7 +4,7 @@ import Webbtn from './Webbtn'
 const Section6 = () => {
   return (
     <>
-        <div className='h-[125vh] px-10 mt-5'>
+        <div className='h-[125vh] px-10 my-32'>
 
                 <div className='flex '>
 
