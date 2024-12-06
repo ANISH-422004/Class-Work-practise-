@@ -12,7 +12,7 @@ const Section4 = () => {
         </div>
 
     
-        <div className='absolute top-[85%] left-[83%]'>
+        <div className='absolute top-[85%] left-[75%]'>
         <Webbtn/>
         </div>
     
