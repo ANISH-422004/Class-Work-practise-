@@ -4,7 +4,7 @@ import Blackbutton from './Blackbutton'
 const Section7 = () => {
   return (
     <>
-    <div  className='bg-white h-[100vh] px-10 py-10 my-10' >
+    <div  className='bg-white min-h-[100vh] px-10 py-10 my-10' >
 
 
         <div id="top" className='h-[20%] flex justify-between'>
@@ -21,10 +21,10 @@ const Section7 = () => {
         <div id="bottom" className='h-[80%] bg-white mt-4 flex gap-2'>
 
             <div className="card group h-[100%] w-[25%] rounded-xl overflow-hidden ">
-                <div id="top" className='h-[50%]  bg-slate-300 object-cover rounded-none  '>
+                <div id="top" className='h-[50%]  bg-slate-300 object-cover transition-all duration-500 overflow-hidden  group-hover:rounded-3xl '>
                     <img className='h-[100%] w-[100%]' src="https://cdn.prod.website-files.com/648884be5f32a12e5da2392f/64cac464ae61273a7c937ded_BRAND%20STORY_Over-Nan-p-500.jpg" alt="" />
                 </div>
-                <div id="bottomIN" className='h-[50%] bg-[#AA81B7]  text-white flex flex-col justify-center items-center gap-8'>
+                <div id="bottomIN" className='h-[50%] bg-[#AA81B7]  text-white flex flex-col justify-center items-center gap-8 transition-all duration-500 overflow-hidden object-cover group-hover:rounded-3xl'>
                        <h4 className='w-[60%]'>
                             Brand Story
                          </h4>
@@ -35,10 +35,10 @@ const Section7 = () => {
                 </div>        
             </div>
             <div className="card group h-[100%] w-[25%] rounded-xl overflow-hidden">
-                <div id="top" className='h-[50%]  bg-slate-300 object-cover '>
+                <div id="top" className='h-[50%]  bg-slate-300 object-cover transition-all duration-500 overflow-hidden  group-hover:rounded-3xl '>
                     <img className='h-[100%] w-[100%]' src="https://cdn.prod.website-files.com/648884be5f32a12e5da2392f/64e51e8b3be191fdc49c321d_NaN_Merkidentiteit-p-500.jpg" alt="" />
                 </div>
-                <div id="bottomIN" className='h-[50%] bg-black text-white flex flex-col justify-center items-center gap-8'>
+                <div id="bottomIN" className='h-[50%] bg-black text-white flex flex-col justify-center items-center gap-8 transition-all duration-500 overflow-hidden  group-hover:rounded-3xl'>
                          <h4 className='w-[60%]'>
                             Brand Story
                          </h4>
@@ -49,10 +49,10 @@ const Section7 = () => {
                 </div>        
             </div>
             <div className="card group h-[100%] w-[25%] rounded-xl overflow-hidden">
-                <div id="top" className='h-[50%]  bg-slate-300 object-cover '>
+                <div id="top" className='h-[50%]  bg-slate-300 object-cover transition-all duration-500 overflow-hidden  group-hover:rounded-3xl '>
                     <img className='h-[100%] w-[100%]' src="https://cdn.prod.website-files.com/648884be5f32a12e5da2392f/64e51e7766e8d5682bf6ee25_NaN_Webdesign-p-500.jpg" alt="" />
                 </div>
-                <div id="bottomIN" className='h-[50%] bg-[#36A96A]  text-white flex flex-col justify-center items-center gap-8 '>
+                <div id="bottomIN" className='h-[50%] bg-[#36A96A]  text-white flex flex-col justify-center items-center gap-8 transition-all duration-500 overflow-hidden  group-hover:rounded-3xl'>
                          <h4 className='w-[60%]'>
                             Brand Story
                          </h4>
@@ -63,10 +63,10 @@ const Section7 = () => {
                 </div>        
             </div>
             <div className="card group h-[100%] w-[25%] rounded-xl overflow-hidden">
-                <div id="top" className='h-[50%]  bg-slate-300 object-cover '>
+                <div id="top" className='h-[50%]  bg-slate-300 object-cover transition-all duration-500 overflow-hidden  group-hover:rounded-3xl'>
                     <img className='h-[100%] w-[100%]' src="https://cdn.prod.website-files.com/648884be5f32a12e5da2392f/64bbb43e292b8b8352068a48_NaN_A%20la%20Carte-p-500.jpg" alt="" />
                 </div>
-                <div id="bottomIN" className='h-[50%] bg-[#FA8A58]  text-white flex flex-col justify-center items-center gap-8'>
+                <div id="bottomIN" className='h-[50%] bg-[#FA8A58]  text-white flex flex-col justify-center items-center gap-8 transition-all duration-500 overflow-hidden  group-hover:rounded-3xl'>
                          <h4 className='w-[60%]'>
                             Brand Story
                          </h4>
