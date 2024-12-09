@@ -18,7 +18,7 @@ const Section7 = () => {
         </div>
 
 
-        <div id="bottom" className='h-[80%] bg-white mt-4 flex gap-2'>
+        <div id="bottom" className='h-[80%] mt-4 flex gap-2'>
 
             <div className="card group h-[100%] w-[25%] rounded-xl overflow-hidden ">
                 <div id="top" className='h-[50%]  bg-slate-300 object-cover transition-all duration-500 overflow-hidden  group-hover:rounded-[5em] '>
