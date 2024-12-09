@@ -202,7 +202,7 @@ function App() {
 
   return (
     <>
-      <div className="app min-h-screen w-full bg-gray-600 p-5 flex  flex-wrap ">
+      <div className="app min-h-screen w-full bg-gray-600 p-5 flex  flex-wrap  items-center justify-center">
       {users.map((userdata)=>{
          return <Card className="shrink-0" data={userdata}/> // sending each obj of each user to each card 
       })}
