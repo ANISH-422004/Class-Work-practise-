@@ -45,25 +45,7 @@
 
 //  both in single function
 
-// function isSortedBothWay(arr) {
-//     let isIncreasing = true;
-//     let isDecreasing = true;
 
-//     for (let i = 0; i < arr.length - 1; i++) {
-//         if (arr[i] > arr[i + 1]) {
-//             isIncreasing = false;
-//         }
-//         if (arr[i] < arr[i + 1]) {
-//             isDecreasing = false;
-//         }
-//     }
-
-//     return isIncreasing || isDecreasing;
-// }
-
-// console.log(isSortedBothWay([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])); // true
-// console.log(isSortedBothWay([10, 9, 8, 7, 6, 5, 4, 3, 2, 1])); // true
-// console.log(isSortedBothWay([1, 3, 2, 4, 5])); // false
 
 
 
@@ -145,3 +127,38 @@
 
 // console.log(removeDuplicates([1,1,2]))
 
+///////Q. find  the 2nd largest element in the given array 
+//console.log(Number.MAX_SAFE_INTEGER > -Infinity)
+// console.log(Number.MIN_SAFE_INTEGER)
+
+
+// function secondLargest(arr){
+
+//     let max = -Infinity
+//     for (let  i = 0 ; i < arr.length ; i++){
+//         if (arr[i]>max){
+//             max = arr[i]
+//         }
+//     }
+
+
+    
+    
+//     for (let i = 0 ; i < arr.length ; i++){
+//         if(arr[i] === max ){
+//             arr[i] = -Infinity
+//         }
+//     }
+
+    
+//     let secondLargest  = -Infinity
+//     for( i = 0 ; i < arr.length ; i++){
+//         if (arr[i] > secondLargest){
+//             secondLargest = arr[i]
+//         }
+//     } 
+
+//     return secondLargest
+// }
+
+// console.log(secondLargest([1,2,3,4,5,9,9,6,7,8,,8,9]))  // ans is 8
