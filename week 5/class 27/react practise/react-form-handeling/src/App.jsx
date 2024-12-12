@@ -1,25 +1,20 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { useForm } from 'react-hook-form'
-
-
+import Cards from './components/cards'
+import Form from './components/form'
 function App() {
  
-  const {register , handleSubmit} = useForm () ;
-  // console.log(a);
-  
+  const [users, setuser] = useState([{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},])
+
 
 
   return (
 
     <>
-      <div className='h-20 w-full bg-slate-600' onClick={handleSubmit(data => console.log(data))}>
-        <form action="">
-          <input {...register('name')} type="text" placeholder='name' />
-          <input {...register('email')} type="text" placeholder='email' />
-          <input type="submit" className='bg-blue-500 p-2 rounded-2xl active:bg-black active:text-white' />
-        </form>
+      <div className='h-screen w-full bg-slate-300 flex items-center justify-center' >
+          <div id="container" className=' mx-16 w-full '> 
+            <Cards users={users}/>
+            <Form/>
+          </div>
       </div>
     </>
   )
