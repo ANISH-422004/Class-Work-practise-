@@ -1,17 +1,35 @@
 import React from "react";
+import { Link, Outlet } from "react-router-dom";
 
 const User = () => {
   return (
-    <div className="w-full flex justify-center">
-      <div className=" w-[40%]  p-6 flex flex-col gap-2 ">
-        <h1 className="text-5xl font-sans text-rose-200"> User </h1>
-        <p className="text-zinc-400 font-semibold">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis
-          cupiditate atque recusandae autem laudantium officiis accusamus
-          voluptatibus iure voluptas fuga.
-        </p>
-        <button className="w-40 bg-rose-300 p-2 rounded-lg">More</button>
+    <div className="w-full flex justify-center  ">
+      <div className="flex  w-[20%] flex-col gap-3 my-5 pb-5  border-grey border-b-4">
+        <Link
+          to="/user/anish"
+          className="p-3  bg-red-300 text-2xl hover:bg-red-400 rounded"
+        >
+          Anish
+        </Link>
+        <Link
+          to="/user/simi"
+          className="p-3  bg-red-300 text-2xl hover:bg-red-400 rounded"
+        >
+          Simi
+        </Link>
+        <Link
+          to="/user/agniv"
+          className="p-3  bg-red-300 text-2xl hover:bg-red-400 rounded"
+        >
+          Agniv
+        </Link>
+        
+
+
+
       </div>
+      {/* <Outlet/> */}
+      
     </div>
   );
 };
