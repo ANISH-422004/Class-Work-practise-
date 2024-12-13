@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import Cards from './components/cards'
-import Form from './components/form'
+import Form from './components/Form.jsx'
 function App() {
  
-  const [users, setuser] = useState([{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},])
+  const [users, setUser] = useState([{},])
 
-
+  const handelSubmit = (e)=>{
+        e.preventDefault()
+  }
 
   return (
 
@@ -13,7 +15,7 @@ function App() {
       <div className='h-screen w-full bg-slate-300 flex items-center justify-center' >
           <div id="container" className=' mx-16 w-full '> 
             <Cards users={users}/>
-            <Form/>
+            <Form setUser={setUser} users={users}/>
           </div>
       </div>
     </>
