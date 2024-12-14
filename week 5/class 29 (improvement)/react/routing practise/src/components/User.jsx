@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 
 const User = () => {
   return (
-    <div className="w-full flex justify-center  ">
+    <div className="w-full flex flex-col items-center  ">
       <div className="flex  w-[20%] flex-col gap-3 my-5 pb-5  border-grey border-b-4">
         <Link
           to="/user/anish"
@@ -28,7 +28,7 @@ const User = () => {
 
 
       </div>
-      {/* <Outlet/> */}
+      <Outlet/>
       
     </div>
   );
