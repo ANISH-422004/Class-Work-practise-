@@ -4,10 +4,10 @@ import { Link, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Show from "./components/Show";
 import Services from "./components/Services";
+import Users from "./components/Users";
+import Userdetails from "./components/Userdetails";
 
 const App = () => {
-
-
   const addproduct = () => {
     const api = "https://fakestoreapi.com/products";
 
@@ -33,14 +33,17 @@ const App = () => {
         <Link to="/">HOME</Link>
         <Link to="/show">SHOW</Link>
         <Link to="/services">SERVICES</Link>
-        
+        <Link to="/users">USERS</Link>
       </nav>
       <hr />
 
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/show" element={<Show/>}></Route>
-        <Route path="/services" element={<Services/>}></Route>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/show" element={<Show />}></Route>
+        <Route path="/services" element={<Services />}></Route>
+        <Route path="/users" element={<Users />}>
+          <Route path="/users/:id" element={<Userdetails />}></Route>
+        </Route>
       </Routes>
     </div>
   );

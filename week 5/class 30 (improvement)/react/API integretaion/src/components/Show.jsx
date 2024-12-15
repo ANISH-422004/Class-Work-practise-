@@ -1,14 +1,14 @@
-import axios from "axios";
+import axios from "../utils/axios";
 import React, { useEffect, useState } from "react";
 
 const Show = () => {
   const [product, setproduct] = useState([]);
 
   const getproducts = () => {
-    const api = "https://fakestoreapi.com/products";
+    // const api = "https://fakestoreapi.com/products";
 
     axios
-      .get(api)
+      .get("/products")
       .then((response) => {
         setproduct(response.data);
       })
@@ -16,10 +16,9 @@ const Show = () => {
         console.log(err);
       });
   };
-  useEffect(()=>{
-    
+  useEffect(() => {
     getproducts();
-  },[])
+  }, []);
 
   return (
     <>
@@ -28,7 +27,7 @@ const Show = () => {
         className="text-xl bg-red-300  m-2 p-1 rounded-lg active:bg-red-500"
       >
         CALL API
-      </button >
+      </button>
       <hr />
 
       <ul className="bg-red-300 h-[50vh] m-5 p-2 mb-5 overflow-auto">
@@ -42,7 +41,7 @@ const Show = () => {
             </li>
           ))
         ) : (
-          <p>Loading...</p>
+          <p className="text-white">Loading...</p>
         )}
       </ul>
     </>
