@@ -238,3 +238,76 @@
 //     }
 //     return fact;
 // }
+
+
+
+///////////////////// TASK3
+
+// Q1. find max number of 1 appers consucutevy in a binary array
+// let nums = [1,1,0,1,1,1]
+// let count =0
+// let max= 0
+// for (let i=0;i<nums.length;i++){
+//     if(nums[i]===1){
+//         count++
+//     }else{
+//         max= Math.max(count,max)        
+//         count = 0
+//     }
+// }
+// max= Math.max(count,max)
+
+// console.log(max);
+
+
+
+
+
+//Q2.find the freq of each number in the array 
+
+// let nums = [1,5,3,1,3,5,6]
+// let freq={}
+
+// for (let i = 0 ; i<nums.length ; i++){
+//     if (freq[nums[i]] in freq){
+//         freq[nums[i]]+=1
+//     }else{
+//         freq[nums[i]] =1   
+//     }
+// }
+// console.log(freq);
+
+
+
+
+
+
+/// Devleopres approach 
+// let nums = [1, 5, 3, 1, 3, 5, 6];
+// let uniqueNums = new Set(nums); // Create a Set to store unique elements
+
+// // Output the frequency of each unique element
+// for (let num of uniqueNums) {
+//     let count = nums.filter(x => x === num).length; // Count occurrences of the element
+//     console.log(`${num} - ${count}`);
+// }
+
+// by set approct to much un optimised
+
+
+// let nums = [1, 5, 3, 1, 3, 5, 6];
+// let uniqueNums = new Set(nums); // Create a Set to store unique elements
+
+
+// for (let num of uniqueNums) {  //n unique elems
+//     let count = 0;
+//     for (let i = 0; i < nums.length; i++) {  //m no of tot elem 
+//         if (nums[i] === num) {
+//             count++;
+//         }
+//     }
+//     console.log(`${num} - ${count}`);
+// }
+
+
+//timecomplexity O(m*n)
