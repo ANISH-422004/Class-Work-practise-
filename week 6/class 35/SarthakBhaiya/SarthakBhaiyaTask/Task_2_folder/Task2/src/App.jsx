@@ -60,7 +60,7 @@ const App = () => {
     <>
       <Nav Numberaddedtocarts={Numberaddedtocarts}></Nav>
       <div className="px-20">
-        <Home products={products} setproducts={setproducts}></Home>
+        <Home products={products} setproducts={setproducts}></Home> 
       </div>
     </>
   );

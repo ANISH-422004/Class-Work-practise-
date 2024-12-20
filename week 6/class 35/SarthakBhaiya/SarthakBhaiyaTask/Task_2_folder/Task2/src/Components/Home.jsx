@@ -5,12 +5,16 @@ const Home = (props) => {
   const { products, setproducts } = props;
 
   const handleToggleAddToCart = (id) => {
-    setproducts(() =>
-      products.map((product) =>
-        product.id === id
-          ? { ...product, isaddedtocart: !product.isaddedtocart }
-          : product
-      )
+    setproducts(() =>{
+        return(
+            products.map((product) =>
+                product.id === id
+                  ? { ...product, isaddedtocart: !product.isaddedtocart }
+                  : product
+              )
+        )
+    }
+     
     );
   };
   return (
