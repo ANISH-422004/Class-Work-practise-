@@ -311,3 +311,62 @@
 
 
 //timecomplexity O(m*n)
+
+
+
+//Q3.
+// function findThirdLargest(arr) {
+//     if (arr.length < 3) {
+//         return "Array doesn't have 3 elements";
+//     }
+    
+//     let first = -Infinity, second = -Infinity, third = -Infinity;
+    
+//     for (let num of arr) {
+//         if (num > first) {
+//             third = second;
+//             second = first;
+//             first = num;
+//         } else if (num > second && num !== first) {
+//             third = second;
+//             second = num;
+//         } else if (num > third && num !== second && num !== first) {
+//             third = num;
+//         }
+//     }
+    
+//     return third === -Infinity ? "Array doesn't have 3 unique elements" : third;
+// }
+
+// // Example usage
+// let arr = [12, 13, 5, 7, 3, 13, 8, 12];
+// console.log(findThirdLargest(arr));  // Output: 8
+
+
+// Q4.
+
+// function balanceArray(arr) {
+//     let leftWeight = 0;
+//     let rightWeight = 0;
+  
+ 
+//     for (let i = 0; i < arr.length / 2; i++) {
+//       leftWeight += arr[i];
+//     }
+//     for (let i = arr.length / 2; i < arr.length; i++) {
+//       rightWeight += arr[i];
+//     }
+  
+//     if (leftWeight === rightWeight) {
+//       return "Array is balanced";
+//     } else if (leftWeight < rightWeight) {
+//       return `Add ${rightWeight - leftWeight} to the left side`;
+//     } else {
+//       return `Add ${leftWeight - rightWeight} to the right side`;
+//     }
+//   }
+
+
+//   const arr = [1, 2, 1, 3];
+//   const result = balanceArray(arr);
+//   console.log(result); 
