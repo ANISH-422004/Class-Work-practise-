@@ -12,7 +12,7 @@
 //         }
 //     }
 //     return arr        
-    
+
 // }
 // console.log(bubblesort(arr))
 
@@ -54,7 +54,7 @@
 //     console.log("E");
 // }else{
 //     console.log("Fail");
-    
+
 // }
 
 
@@ -83,7 +83,7 @@
 // }
 // else{
 //     console.log("invalid operation");
-    
+
 // }
 
 //Q5. fizz , buzz , fizzbuzz
@@ -91,15 +91,15 @@
 
 //     if (i%5===0 && i%3===0){
 //         console.log("FIZZBUZZ"+i);
-        
+
 //     }else{
 //         if (i%3===0){
 //             console.log("fizz"+ i);
-            
+
 //         }
 //         if (i%5===0){
 //             console.log("bzz"+i);
-            
+
 //         }
 //     }
 // }
@@ -112,21 +112,21 @@
 // let b = 1
 // if (n<=0){
 //     console.log("invalid number");
-    
+
 // }
 // else{
 //     if(n>=1){
 //         console.log(a);
-        
+
 //     }
 //     if(n>=2){
 //         console.log(b);
-        
+
 //     }
 //     for (let i =3 ; i<=n ; i++ ){
 //         c=a+b
 //         console.log(c);
-        
+
 //         a=b
 //         b=c
 //     }
@@ -138,6 +138,103 @@
 
 // Q2. LCM lowest common multiplee the lowest number which s multiple for bi=oth a and b or more numbers
 
-let a = Number(prompt("enterfirstnumber:"))
-let b = Number(prompt("enterSecondnumber:"))
 
+// function LCM(a, b) {
+//     let c = b
+
+//     while (c >= b) {
+//         if (c % a == 0 && c % b == 0) {
+//             return (c)
+
+//         }
+//         c++
+//     }
+
+// }
+
+// console.log(LCM(18,12));
+
+
+//Q3.HCF
+
+// let a = 48
+// let b = 12
+// for (i=b; i>0 ; i--){
+//     if(a%i===0 && b%i===0){
+//         console.log("HCF"+" "+i)
+//         break;
+//     }
+// }
+
+
+// Q4. Hailstone numbers
+// let n = Number(prompt("enter Number : "))
+// let n = 7;
+// console.log(n);  // Print the initial number
+
+// while (n > 2) {
+//     if (n % 2 === 0) {
+//         n = n / 2;
+//     } else {
+//         n = 3 * n + 1;
+//     }
+//     console.log(n);  // Print the number after each transformation
+// }
+
+
+//Q5.
+
+// let options = alert(
+//     "1. Check if it's even or odd\n2. Check if it's a prime\n3. Calculate factorial\n4. Exit"
+// );
+// let choice = Number(prompt("Enter Your Choice"));
+
+// switch (choice) {
+//     case 1:
+//         let num1 = Number(prompt("Enter Your Number"));
+//         console.log(EorO(num1));
+//         break;
+
+//     case 2:
+//         let num2 = Number(prompt("Enter Your Number"));
+//         console.log(isPrime(num2));
+//         break;
+
+//     case 3:
+//         let num3 = Number(prompt("Enter Your Number"));
+//         console.log(fact(num3));
+//         break;
+
+//     case 4:
+//         console.log("Program finished");
+//         break;
+
+//     default:
+//         console.log("Invalid input");
+// }
+
+// function EorO(n) {
+//     if (n % 2 === 0) {
+//         return "Even";
+//     }
+//     return "Odd";
+// }
+
+// function isPrime(n) {
+//     if (n <= 1) return "Not Prime"; // Handle numbers <= 1
+//     for (let i = 2; i <= Math.sqrt(n); i++) { // Optimize by checking up to √n
+//         if (n % i === 0) {
+//             return "Not Prime";
+//         }
+//     }
+//     return "Prime Number";
+// }
+
+// function fact(n) {
+//     if (n < 0) return "Factorial not defined for negative numbers"; // Handle negatives
+//     let fact = 1;
+//     for (let i = 1; i <= n; i++) {
+//         fact *= i;
+//     }
+//     return fact;
+// }
