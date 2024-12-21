@@ -319,9 +319,9 @@
 //     if (arr.length < 3) {
 //         return "Array doesn't have 3 elements";
 //     }
-    
+
 //     let first = -Infinity, second = -Infinity, third = -Infinity;
-    
+
 //     for (let num of arr) {
 //         if (num > first) {
 //             third = second;
@@ -334,7 +334,7 @@
 //             third = num;
 //         }
 //     }
-    
+
 //     return third === -Infinity ? "Array doesn't have 3 unique elements" : third;
 // }
 
@@ -348,15 +348,15 @@
 // function balanceArray(arr) {
 //     let leftWeight = 0;
 //     let rightWeight = 0;
-  
- 
+
+
 //     for (let i = 0; i < arr.length / 2; i++) {
 //       leftWeight += arr[i];
 //     }
 //     for (let i = arr.length / 2; i < arr.length; i++) {
 //       rightWeight += arr[i];
 //     }
-  
+
 //     if (leftWeight === rightWeight) {
 //       return "Array is balanced";
 //     } else if (leftWeight < rightWeight) {
@@ -370,3 +370,77 @@
 //   const arr = [1, 2, 1, 3];
 //   const result = balanceArray(arr);
 //   console.log(result); 
+
+
+
+
+///////////////TASK4///////////////////////////
+
+// Q1.Given a square matrix mat, return the sum of the matrix diagonals. 
+
+// Only include the sum of all the elements on the primary diagonal and 
+// all the elements on the secondary diagonal that are not part of the 
+// primary diagonal. 
+// Input: mat = [[1,2,3], 
+//               [4,5,6], 
+//               [7,8,9]] 
+// Output: 25
+
+// let mat = [[1, 2, 3],
+// [4, 5, 6],
+// [7, 8, 9]]
+// let sum = 0
+// for (let i = 0; i < mat.length; i++) {
+//     for (let j = 0; j < mat.length; j++) {
+//         if (i===j){
+//             sum +=mat[i][j]
+//         }
+//     }
+
+// }
+// console.log(sum);
+
+
+
+
+
+
+// Q2.ranspose Matrix 
+// Given a 2D integer array matrix, return the transpose of matrix. 
+// The transpose of a matrix is the matrix flipped over its main diagonal, 
+// switching the matrix's row and column indices. 
+ 
+// Input: matrix = [[1,2,3],[4,5,6],[7,8,9]] 
+// Output: [[1,4,7],[2,5,8],[3,6,9]]
+
+
+// let mat = [[1, 2, 3],
+// [4, 5, 6],
+// [7, 8, 9]]
+// for (let i = 0; i < mat.length; i++) {
+//     for (let j = i; j < mat.length; j++) {
+        
+//             [mat[i][j],mat[j][i]]=[mat[j][i],mat[i][j]] 
+        
+//     }
+// }
+
+// console.log(mat);
+
+
+// Q3. Maximum Population Year 
+// You are given a 2D integer array logs where each logs[i] = [birthi, 
+// deathi] indicates the birth and death years of the ith person. 
+// The population of some year x is the number of people alive during 
+// that year. The ith person is counted in year x's population if x is in the 
+// inclusive range [birthi, deathi - 1]. Note that the person is not 
+// counted in the year that they die. 
+// Return the earliest year with the maximum population. 
+ 
+// Example 1: 
+ 
+// Input: logs = [[1993,1999],[2000,2010]] 
+// Output: 1993 
+
+
+//not done yet
