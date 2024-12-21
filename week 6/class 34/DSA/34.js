@@ -409,7 +409,7 @@
 // Given a 2D integer array matrix, return the transpose of matrix. 
 // The transpose of a matrix is the matrix flipped over its main diagonal, 
 // switching the matrix's row and column indices. 
- 
+
 // Input: matrix = [[1,2,3],[4,5,6],[7,8,9]] 
 // Output: [[1,4,7],[2,5,8],[3,6,9]]
 
@@ -419,9 +419,9 @@
 // [7, 8, 9]]
 // for (let i = 0; i < mat.length; i++) {
 //     for (let j = i; j < mat.length; j++) {
-        
+
 //             [mat[i][j],mat[j][i]]=[mat[j][i],mat[i][j]] 
-        
+
 //     }
 // }
 
@@ -436,11 +436,89 @@
 // inclusive range [birthi, deathi - 1]. Note that the person is not 
 // counted in the year that they die. 
 // Return the earliest year with the maximum population. 
- 
+
 // Example 1: 
- 
+
 // Input: logs = [[1993,1999],[2000,2010]] 
 // Output: 1993 
 
 
-//not done yet
+//not done yet some problem with it 
+
+
+
+
+
+// Q4. Rotate by 90 degree 
+// Given a square matrix of size N x N. The task is to rotate it by 90 
+// degrees in anti-clockwise direction without using any extra space.  
+
+// Example 1: 
+// Input: 
+// N = 3  
+// matrix[][] = {{1, 2, 3}, 
+//               {4, 5, 6} 
+//               {7, 8, 9}} 
+// Output:  
+// Rotated Matrix: 
+// 3 6 9 
+// 2 5 8 
+// 1 4 7 
+
+
+//cant do it tried once 
+
+
+
+
+
+
+// Q5. Flipping an Image 
+// Given an n x n binary matrix image, flip the image horizontally, then 
+// invert it, and return the resulting image. 
+// To flip an image horizontally means that each row of the image is 
+// reversed. 
+// For example, flipping [1,1,0] horizontally results in [0,1,1]. 
+// To invert an image means that each 0 is replaced by 1, and each 1 is 
+// replaced by 0. 
+// For example, inverting [0,1,1] results in [1,0,0]. 
+// Example 1: 
+// Input: image = [[1,1,0],[1,0,1],[0,0,0]] 
+// Output: [[1,0,0],[0,1,0],[1,1,1]] 
+// Explanation: First reverse each row: [[0,1,1],[1,0,1],[0,0,0]]. 
+// Then, invert the image: [[1,0,0],[0,1,0],[1,1,1]] 
+
+
+// let image = [[1, 1, 0], [1, 0, 1], [0, 0, 0]]
+// let r = []
+// let n = image.length - 1
+// for (i = 0; i <= n; i++) {
+
+//     let f = 0
+//     let l = n
+//     let revrow = image[i]
+//     while (f <= l) {
+//         temp = revrow[f]
+//         revrow[f] = revrow[l]
+//         revrow[l] = temp
+//         f++
+//         l--
+//     }
+//     r.push(revrow)
+// }
+
+// for (let i = 0; i <= n; i++) {
+//     for (let j = 0; j <= n; j++) {
+//         if (r[i][j] === 0) {
+//             r[i][j] = 1
+//         } else {
+//             r[i][j] = 0
+//         }
+//     }
+
+// }
+// console.log(r);
+
+
+
+
