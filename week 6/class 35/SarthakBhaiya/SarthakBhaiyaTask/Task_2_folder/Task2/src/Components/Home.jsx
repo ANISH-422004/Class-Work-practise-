@@ -1,22 +1,28 @@
-// Home.jsx
 import React from "react";
 
-const Home = (props) => {
-  const { products, setproducts } = props;
-
+const Home = ({ products, setproducts, setNumberaddedtocarts ,addedtocartproducts,setaddedtocartproducts}) => {
   const handleToggleAddToCart = (id) => {
-    setproducts(() =>{
-        return(
-            products.map((product) =>
-                product.id === id
-                  ? { ...product, isaddedtocart: !product.isaddedtocart }
-                  : product
-              )
-        )
-    }
-     
-    );
+    // Update the products state
+    setproducts((prevProducts) => {
+      const updatedProducts = prevProducts.map((product) =>
+        product.id === id
+          ? { ...product, isaddedtocart: !product.isaddedtocart }
+          : product
+      );
+
+      // Updating no. of items in the cart
+    
+      
+      // setNumberaddedtocarts(count.length);
+      const filteredproucts = updatedProducts.filter((p) => p.isaddedtocart)
+      // console.log((filteredproucts));
+      setaddedtocartproducts(filteredproucts)
+      
+      
+      return updatedProducts;
+    });
   };
+
   return (
     <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       {products.map((product) => (
