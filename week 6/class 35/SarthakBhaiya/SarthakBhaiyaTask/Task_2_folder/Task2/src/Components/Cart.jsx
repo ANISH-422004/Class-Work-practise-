@@ -1,6 +1,18 @@
 import React, { useState } from "react";
 
-const Cart = ({ addedtocartproducts }) => {
+// What is reduce?
+// reduce is a higher-order array method in JavaScript that is used to iterate over an array and reduce it to a single value. This value can be a number, string, object, or any other data type. The method executes a callback function for each element in the array, and the result of each iteration is passed to the next.
+//array.reduce(callback(accumulator, currentValue, currentIndex, array), initialValue)
+// const numbers = [10, 20, 30, 40];
+
+// const sum = numbers.reduce((accumulator, currentValue) => {
+//   return accumulator + currentValue;
+// }, 0);
+
+// console.log(sum); // Output: 100
+
+
+const Cart = ({ addedtocartproducts  ,toatalamout }) => {
 
   return (
     <div className="p-4 bg-white shadow-md rounded-md">
@@ -26,7 +38,7 @@ const Cart = ({ addedtocartproducts }) => {
             </div>
           ))}
 
-          <h1>Total Price : $</h1>
+          <h1>Total Price : ${toatalamout}</h1>
         </div>
       )}
     </div>

@@ -5,7 +5,7 @@ import Cart from "./Components/Cart";
 
 const App = () => {
 
-  
+
   const [products, setproducts] = useState([
     {
       id: 1,
@@ -58,7 +58,7 @@ const App = () => {
   ]);
 
   const [addedtocartproducts, setaddedtocartproducts] = useState([]);
-  // const [toatalamout, settoatalamout] = useState(0);
+  const [toatalamout, settoatalamout] = useState(0);
 
 
   return (
@@ -72,10 +72,11 @@ const App = () => {
             setproducts={setproducts}
             addedtocartproducts={addedtocartproducts}
             setaddedtocartproducts={setaddedtocartproducts}
+            settoatalamout={settoatalamout}
           />
         </div>
         <div className="w-[30%] py-4 pr-20">
-          <Cart addedtocartproducts={products.filter((p) => p.isaddedtocart)} />
+          <Cart addedtocartproducts={products.filter((p) => p.isaddedtocart)} toatalamout={toatalamout} />
         </div>
       </div>
     </>

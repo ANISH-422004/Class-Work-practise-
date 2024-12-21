@@ -1,6 +1,11 @@
-import React from "react";
-
-const Home = ({ products, setproducts, setNumberaddedtocarts ,addedtocartproducts,setaddedtocartproducts}) => {
+const Home = ({ 
+  products, 
+  setproducts, 
+  setNumberaddedtocarts, 
+  addedtocartproducts, 
+  setaddedtocartproducts, 
+  settoatalamout 
+}) => {
   const handleToggleAddToCart = (id) => {
     // Update the products state
     setproducts((prevProducts) => {
@@ -8,16 +13,27 @@ const Home = ({ products, setproducts, setNumberaddedtocarts ,addedtocartproduct
         product.id === id
           ? { ...product, isaddedtocart: !product.isaddedtocart }
           : product
-      );
+      ); // setting ture or false in single source of truth
 
-      // Updating no. of items in the cart
-    
-      
-      // setNumberaddedtocarts(count.length);
-      const filteredproucts = updatedProducts.filter((p) => p.isaddedtocart)
-      // console.log((filteredproucts));
-      setaddedtocartproducts(filteredproucts)
-      
+
+
+      // Update the added-to-cart products array made from setproducts
+      const addedToCartArray = updatedProducts.filter((p) => p.isaddedtocart);
+      setaddedtocartproducts(addedToCartArray);
+
+
+
+      // Update the total amount made form addedToCartArray
+      const totalAmount = addedToCartArray.reduce((sum, product) => {
+        return sum + parseFloat(product.price.replace("$", "")); 
+      }, 0);
+      // The expression parseFloat(product.price.replace("$", "")) is used to extract and convert a numeric value from a string that includes a dollar sign (e.g., "$20")
+      settoatalamout(totalAmount);
+
+
+
+
+
       
       return updatedProducts;
     });
