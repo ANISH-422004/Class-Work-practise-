@@ -1,18 +1,71 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-// What is reduce?
-// reduce is a higher-order array method in JavaScript that is used to iterate over an array and reduce it to a single value. This value can be a number, string, object, or any other data type. The method executes a callback function for each element in the array, and the result of each iteration is passed to the next.
-//array.reduce(callback(accumulator, currentValue, currentIndex, array), initialValue)
-// const numbers = [10, 20, 30, 40];
-
-// const sum = numbers.reduce((accumulator, currentValue) => {
-//   return accumulator + currentValue;
-// }, 0);
-
-// console.log(sum); // Output: 100
+const Cart = ({ addedtocartproducts , setaddedtocartproducts}) => {
+  const [toatalamout, settoatalamout] = useState(0);
 
 
-const Cart = ({ addedtocartproducts  ,toatalamout }) => {
+  useEffect(() => {
+    const total = addedtocartproducts.reduce(
+      (sum, product) =>
+        sum + parseFloat(product.price.slice(1)) * product.Countincart,
+      0
+    );
+    settoatalamout(total);
+  }, [addedtocartproducts]);
+
+
+//   The dependency array tells React when to re-run the effect.
+// In this case, addedtocartproducts is a dependency, meaning the effect will only re-run if the value of addedtocartproducts changes.
+
+  // Function to handle increasing the product count
+  const handleIncrease = (product) => {
+    const updatedProducts = addedtocartproducts.map((item) => {
+      if (item.id === product.id) {
+        item.Countincart += 1; 
+      }
+      return item;
+    });
+    const total = updatedProducts.reduce(
+      (sum, product) =>
+        sum + parseFloat(product.price.slice(1)) * product.Countincart,
+      0
+    );
+    settoatalamout(total); 
+  };
+
+  // Function to handle decreasing the product count
+  const handleDecrease = (product) => {
+    const updatedProducts = addedtocartproducts.map((item) => {
+      if (item.id === product.id && item.Countincart > 1) { // 1 ke nahi jaye ga 
+        item.Countincart -= 1; 
+      }
+      return item;
+    });
+    const total = updatedProducts.reduce(
+      (sum, product) =>
+        sum + parseFloat(product.price.slice(1)) * product.Countincart,
+      0
+    );
+    settoatalamout(total); // Update the total amount
+  };
+  
+
+  // Function to delete an item from the cart
+  const handelDeletetheItemFromCart = (id) => {
+    const updatedProducts = addedtocartproducts.filter(
+      (product) => product.id !== id
+    );
+    setaddedtocartproducts(updatedProducts); 
+  };
+  
+
+
+
+
+console.log(addedtocartproducts);
+
+
+
 
   return (
     <div className="p-4 bg-white shadow-md rounded-md">
@@ -24,21 +77,42 @@ const Cart = ({ addedtocartproducts  ,toatalamout }) => {
           {addedtocartproducts.map((product) => (
             <div
               key={product.id}
-              className="flex items-center justify-between p-4 border rounded shadow"
+              className="flex items-center justify-between p-4 border rounded shadow relative"
             >
               <img
                 src={product.image}
                 alt={product.name}
                 className="w-16 h-16 object-cover rounded"
               />
-              <div>
-                <h3 className="font-semibold">{product.name}</h3>
-                <p className="text-gray-600">{product.price}</p>
+              <div className="flex items-center gap-2">
+                <button
+                  className="w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center"
+                  onClick={() => handleDecrease(product)}
+                >
+                  -
+                </button>
+                <span className="text-lg font-semibold">
+                  {product.Countincart}
+                </span>
+                <button
+                  className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center"
+                  onClick={() => handleIncrease(product)}
+                >
+                  +
+                </button>
               </div>
+              <div>
+                <h3 className="font-semibold te">{product.name}</h3>
+                <p className="text-gray-600">Price per Item : <span className="font-mono text-xl text-red-500">{product.price}</span></p>
+              </div>
+            <div className="h-6 aspect-square text-center rounded-full bg-red-600 text-white absolute top-[0%] left-[100%] -translate-x-[60%] -translate-y-[20%] hover:cursor-pointer" onClick={()=>{handelDeletetheItemFromCart(product.id)}}>X</div>
+
             </div>
           ))}
 
-          <h1>Total Price : ${toatalamout}</h1>
+          <h1 className="text-xl font-bold mt-4">
+            Total Price: ${toatalamout.toFixed(2)}
+          </h1>
         </div>
       )}
     </div>
