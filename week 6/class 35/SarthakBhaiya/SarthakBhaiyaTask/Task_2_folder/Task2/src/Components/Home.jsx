@@ -1,9 +1,14 @@
+import { useEffect } from "react";
+
   const Home = ({ 
     products, 
     setproducts,  
     setaddedtocartproducts, 
     
   }) => {
+
+    useEffect(()=>{},[products])
+
     const handleToggleAddToCart = (id) => {
       // Update the products state
       setproducts((prevProducts) => {
@@ -13,22 +18,14 @@
             : product
         ); // setting ture or false in single source of truth
 
-
+        
 
         // Update the added-to-cart products array made from setproducts
         const addedToCartArray = updatedProducts.filter((p) => p.isaddedtocart);
         setaddedtocartproducts(addedToCartArray);
 
 
-
-
-
-
-
-
-
-        
-        return updatedProducts;
+        return products;       
       });
     };
 
