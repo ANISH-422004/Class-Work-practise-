@@ -4,20 +4,15 @@ import axios from "axios";
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [cartproducts, setcartproducts] = useState([]);
-  const[click,setClick]=useState({});
+ 
   console.log(cartproducts);
 
   const handelAddToCart = (idx) => {
     // console.log("i was clicked ", idx);
-    
     let clickedproduct = products[idx]; 
-    
     // console.log(clickedproduct);
-
-    setClick((prev)=>({...prev,[idx]:!prev[idx]}));
     setcartproducts([...cartproducts,clickedproduct]);
   
-
 };
 
   const getProducts = async () => {
@@ -33,7 +28,7 @@ const Home = () => {
   return (
     <>
       <div className="w-[70%] h-screen ">
-        <div className="bg-blue-200 h-[6%] flex items-center justify-center">
+        <div className=" h-[6%] flex items-center justify-center">
           <button
             onClick={getProducts}
             className="p-2 border border-red-300 text-red-400"
@@ -42,7 +37,7 @@ const Home = () => {
           </button>
         </div>
 
-        <div className="bg-red-300 h-[94%] overflow-y-auto p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className=" h-[94%] overflow-y-auto p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.length > 0 ? (
             products.map((product, idx) => (
               <div
@@ -65,7 +60,7 @@ const Home = () => {
                   className="text-red-400 border border-red-300"
                   onClick={() => handelAddToCart(idx)}
                 >
-                 {click[idx]?"Added":" Add to card"}
+                 Add to card
                 </button>
               </div>
             ))
@@ -74,7 +69,7 @@ const Home = () => {
           )}
         </div>
       </div>
-      <div className="w-[30%] h-screen bg-green-300 overflow-y-auto">
+      <div className="w-[30%] h-screen overflow-y-auto">
         <div>
           <h1 className="text-center font-semibold">YOUR CART</h1>
         </div>
