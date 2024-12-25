@@ -43,7 +43,7 @@ body #parent #progress h2 {
 body #parent #bottom {
   width: 100%;
   display: flex;
-  padding: 0.2rem;
+  padding: 0.4rem;
   justify-content: space-between;
   align-items: center;
 }
