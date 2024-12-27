@@ -40,3 +40,10 @@
 // console.log(s2.trimStart()) // removes preceeding  end
 // console.log(s2.trimEnd())  // removes extra space form end
 
+
+
+//Q56. count the valid words (sol in copy)
+//Q.57. split and change (sol in copy)
+
+
+// Q58.Count the Frequency of alphabets in the word 
