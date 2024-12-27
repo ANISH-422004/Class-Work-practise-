@@ -60,3 +60,20 @@
 //     console.log("not anagram");
 
 // }
+
+
+// Q60.
+let sentence = "ek machli pani me gyi chappk"
+let words = sentence.split(" ")
+console.log(words);
+
+for (let i = 0 ; i<words.length ; i++){
+    for (let j = 0 ; j<words.length-i-1 ; j++){
+        if(words[j].localeCompare(words[j+1])==1){
+            [words[j],words[j+1]]= [words[j+1],words[j]]
+        }
+
+    }
+}
+
+console.log(words);
