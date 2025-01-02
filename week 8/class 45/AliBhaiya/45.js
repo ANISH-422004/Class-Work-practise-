@@ -70,25 +70,25 @@
 
 /// Diagonal sum :
 
-let arr = [
-    [4,2,3],
-    [2,3,4],
-    [3,4,5]
-]
+// let arr = [
+//     [4,2,3],
+//     [2,3,4],
+//     [3,4,5]
+// ]
 
-let lds=0 //piramary diagonal
-let rds = 0  // secondary diagonal
-for(let i = 0 ; i<arr.length; i++){
-    for(let j = 0 ; j<arr[i].length; j++){
-            if(i==j){
-                lds+=arr[i][j]
-            }
-            if(i+j==arr.length-1){
-                rds+=arr[i][j]
-            }
-    }
+// let lds=0 //piramary diagonal
+// let rds = 0  // secondary diagonal
+// for(let i = 0 ; i<arr.length; i++){
+//     for(let j = 0 ; j<arr[i].length; j++){
+//             if(i==j){
+//                 lds+=arr[i][j]
+//             }
+//             if(i+j==arr.length-1){
+//                 rds+=arr[i][j]
+//             }
+//     }
     
         
-}
+// }
 
 console.log("lds",lds,"rds",rds);
