@@ -17,43 +17,43 @@ const App = () => {
     if (loggedInUser) {
       const userData = JSON.parse(loggedInUser);
       // console.log(userData);
-      setuser(userData.role)
-      setloggendInUserData(userData.data)
+      setuser(userData.role);
+      setloggendInUserData(userData.data);
     }
   }, []);
-
-
 
   const handelLogin = (email, password) => {
     if (email === "admin@example.com" && password == "123") {
       setuser("admin");
       localStorage.setItem("loggedinuser", JSON.stringify({ role: "admin" }));
-    }
-    
-    else if (Authdata) {
-          const employee = Authdata.user.employeesdata.find(
-            (e) => e.password == password && e.email == email
-          );
-          if (employee) {
-            setuser("employee");
-            setloggendInUserData(employee);
-            localStorage.setItem(
-              "loggedinuser",
-              JSON.stringify({ role: "employee" , data:employee })
-            );
-          }
-    }
-    
-    else {
+    } else if (Authdata) {
+      const employee = Authdata.user.employeesdata.find(
+        (e) => e.password == password && e.email == email
+      );
+      if (employee) {
+        setuser("employee");
+        setloggendInUserData(employee);
+        localStorage.setItem(
+          "loggedinuser",
+          JSON.stringify({ role: "employee", data: employee })
+        );
+      }
+    } else {
       alert("invalid Credentials");
     }
   };
 
   return (
     <>
-      {!user ? <Login handelLogin={handelLogin} /> : ""}
-      {user == "admin" && <AdminDashboard changeuser={setuser} data={loggendInUserData} />}
-      {user == "employee" && <EmployeeDashboard changeuser={setuser} data={loggendInUserData} />}
+      <div className="w-full">
+        {!user ? <Login handelLogin={handelLogin} /> : ""}
+        {user == "admin" && (
+          <AdminDashboard changeuser={setuser} data={loggendInUserData} />
+        )}
+        {user == "employee" && (
+          <EmployeeDashboard changeuser={setuser} data={loggendInUserData} />
+        )}
+      </div>
     </>
   );
 };

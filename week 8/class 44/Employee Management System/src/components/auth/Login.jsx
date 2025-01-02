@@ -19,8 +19,9 @@ const Login = ({handelLogin}) => {
 
 
   return (
-    <div className="flex justify-center items-center h-screen w-full">
-      <div className="border-2 border-emrald-500 p-8 rounded-lg ">
+    <div className="flex justify-center items-center  h-screen w-full">
+      <div className="border-2 flex justify-center
+      items-center border-emrald-500 p-4 md:p-8 rounded-lg h-[40%] w-[80%] md:w-[40%]">
         <form
           onSubmit={(e)=>{SubmitHandeler(e)}}
           className="flex flex-col items-center justify-center"

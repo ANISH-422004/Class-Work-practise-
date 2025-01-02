@@ -7,7 +7,7 @@ const AdminDashboard = (props) => {
   // console.log(props.changeuser);
   
   return (
-    <div className="p-10 min-h-screen w-full">
+    <div className="p-5 md:p-10 min-h-screen w-full">
     <Header changeuser={props.changeuser}/>
 
     <CreateTask/>

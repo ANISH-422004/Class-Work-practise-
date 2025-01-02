@@ -10,7 +10,7 @@ const TaskList = ({ data }) => {
   return (
     <div
       id="tasklist"
-      className="w-full h-[50%] mt-10 rounded-xl py-5 flex flex-nowrap  overflow-x-auto"
+      className="w-full h-[30%] md:h-[50%] mt-10 rounded-xl py-5 flex flex-nowrap  overflow-x-auto"
     >
       {data.tasks.map((task, idx) => {
         if (task.active) {

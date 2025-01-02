@@ -3,7 +3,7 @@ import React from "react";
 const NewTask = ({task}) => {
   return (
     <>
-      <div className=" h-[50vh] w-80 bg-orange-400 rounded-xl ml-2 flex-shrink-0 p-4 flex flex-col gap-2">
+      <div className=" h-[30%] lg:h-[50vh] w-80 bg-orange-400 rounded-xl ml-2 flex-shrink-0 p-4 flex flex-col gap-2">
         <div className="flex justify-between items-center ">
           <h1 className="bg-red-600 rounded-xlw px-2">{task.category}</h1>
           <h3 className="text-sm font-mono">{task.taskDate}</h3>

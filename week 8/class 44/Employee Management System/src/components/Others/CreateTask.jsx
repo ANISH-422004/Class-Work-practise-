@@ -1,140 +1,117 @@
 import React, { useContext, useState } from "react";
-import NewTask from "../Tasklist/NewTask";
 import { Authcontext } from "../../context/AuthProvider";
 
 const CreateTask = () => {
-
-const {user,setUser} = useContext(Authcontext);
-// console.log(user.employeesdata);
-
+  const { user, setUser } = useContext(Authcontext);
 
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
   const [taskDate, setTaskDate] = useState("");
   const [assignTo, setAssignTo] = useState("");
   const [category, setCategory] = useState("");
-  const [task, setTask] = useState({});
 
   const Handelsubmit = (e) => {
     e.preventDefault();
-  
-    // Create a new task object
     const newTask = {
       active: false,
       newTask: true,
       completed: false,
       failed: false,
-      taskTitle: taskTitle,
-      taskDescription: taskDescription,
-      taskDate: taskDate,
-      category: category,
+      taskTitle,
+      taskDescription,
+      taskDate,
+      category,
     };
-  
-    // Create a new copy of employeesdata
+
     const updatedEmployees = user.employeesdata.map((employee) => {
       if (employee.firstname === assignTo) {
         return {
           ...employee,
-          tasks: [...employee.tasks, newTask], // Add the new task immutably
+          tasks: [...employee.tasks, newTask],
           taskSummary: {
             ...employee.taskSummary,
-            newTask: employee.taskSummary.newTask + 1, // Increment task summary count
+            newTask: employee.taskSummary.newTask + 1,
           },
         };
       }
-      return employee; // No changes for other employees
+      return employee;
     });
-  
-    // Update the user state with the updated employees data
+
     setUser({ ...user, employeesdata: updatedEmployees });
-  
-    // Reset form fields
+
     setTaskTitle("");
     setTaskDescription("");
     setTaskDate("");
     setAssignTo("");
     setCategory("");
-  
+
     console.log("Task created successfully");
   };
-  
 
   return (
-    <div className="">
+    <div className="flex  justify-center items-center p-4 md:p-10">
       <form
-        onSubmit={(e) => {
-          Handelsubmit(e);
-        }}
-        className="flex justify-between items-start gap-2 bg-[#1C1C1C] mt-5 py-2 px-10 rounded"
+        onSubmit={Handelsubmit}
+        className="flex flex-col gap-4 bg-[#1C1C1C] p-4 md:p-8 rounded-md shadow-md w-full max-w-[900px]"
       >
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-4">
+          <div>
+            <label className="text-sm mt-5 block">Task Title</label>
+            <input
+              onChange={(e) => setTaskTitle(e.target.value)}
+              value={taskTitle}
+              type="text"
+              className="bg-transparent border border-gray-300 rounded-md p-2 w-full"
+              placeholder="Make a UI design"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm mt-5 block">Date</label>
+            <input
+              onChange={(e) => setTaskDate(e.target.value)}
+              value={taskDate}
+              type="date"
+              className="bg-transparent border border-gray-300 rounded-md p-2 w-full"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm mt-5 block">Assign to</label>
+            <input
+              onChange={(e) => setAssignTo(e.target.value)}
+              value={assignTo}
+              type="text"
+              className="bg-transparent border border-gray-300 rounded-md p-2 w-full"
+              placeholder="Employee Name"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm mt-5 block">Category</label>
+            <input
+              onChange={(e) => setCategory(e.target.value)}
+              value={category}
+              type="text"
+              className="bg-transparent border border-gray-300 rounded-md p-2 w-full"
+              placeholder="Design or Dev or Etc..."
+            />
+          </div>
+        </div>
+
         <div>
-          <h3 className="text-sm mt-5 ">Task Title</h3>
-          <input
-            onChange={(e) => {
-              let cv = e.target.value;
-              setTaskTitle(cv);
-            }}
-            value={taskTitle}
-            type="text"
-            className="bg-transparent border border-gray-300 rounded-md p-1 w-[30vw]"
-            placeholder="Make a UI desgine"
-          />
-
-          <h3 className="text-sm mt-5 ">Date</h3>
-          <input
-            onChange={(e) => {
-              let cv = e.target.value;
-              setTaskDate(cv);
-            }}
-            value={taskDate}
-            type="date"
-            className="bg-transparent border border-gray-300 rounded-md p-1 w-[30vw]"
-          />
-
-          <h3 className="text-sm mt-5 ">Assigine to</h3>
-          <input
-            onChange={(e) => {
-              let cv = e.target.value;
-              setAssignTo(cv);
-            }}
-            value={assignTo}
-            type="text"
-            className="bg-transparent border border-gray-300 rounded-md p-1 w-[30vw]"
-            placeholder="Employee Name"
-          />
-
-          <h3 className="text-sm mt-5 ">Category:</h3>
-          <input
-            onChange={(e) => {
-              let cv = e.target.value;
-              setCategory(cv);
-            }}
-            value={category}
-            type="text"
-            className="bg-transparent border border-gray-300 rounded-md p-1 w-[30vw]"
-            placeholder="Desgine or Dev or Etc.."
-          />
-        </div>
-
-        <div className=" w-[35%] flex flex-col justify-center">
-          <h3>Description</h3>
+          <label className="text-sm block">Description</label>
           <textarea
-            onChange={(e) => {
-              let cv = e.target.value;
-              setTaskDescription(cv);
-            }}
+            onChange={(e) => setTaskDescription(e.target.value)}
             value={taskDescription}
-            className="bg-transparent border border-emerald-400 rounded"
-            name=""
-            id=""
-            cols="30"
-            rows="10"
+            className="bg-transparent border border-emerald-400 rounded-md p-2 w-full"
+            rows="5"
           ></textarea>
-
-          <button className="bg-emerald-400 p-2 mt-2 rounded-lg ">
-            Create Task
-          </button>
         </div>
+
+        <button className="bg-emerald-400 p-2 mt-2 rounded-md w-full md:w-auto self-center">
+          Create Task
+        </button>
       </form>
     </div>
   );
