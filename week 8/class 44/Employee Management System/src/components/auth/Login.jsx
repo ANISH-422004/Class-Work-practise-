@@ -9,8 +9,6 @@ const Login = ({handelLogin}) => {
 
   const SubmitHandeler = (e) => {
     e.preventDefault()
-    console.log(email);
-    console.log(password);
     handelLogin(email,password)
     setEmail("")
     setPassword( "")
@@ -21,7 +19,7 @@ const Login = ({handelLogin}) => {
 
 
   return (
-    <div className="flex justify-center items-center h-screen w-screen">
+    <div className="flex justify-center items-center h-screen w-full">
       <div className="border-2 border-emrald-500 p-8 rounded-lg ">
         <form
           onSubmit={(e)=>{SubmitHandeler(e)}}

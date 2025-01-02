@@ -1,6 +1,10 @@
+import { useEffect } from "react";
+
+// localStorage.clear()
 const employees = [
   {
     id: 1,
+    firstname: "Aarav",
     email: "employee1@example.com",
     password: "123",
     tasks: [
@@ -35,9 +39,16 @@ const employees = [
         failed: false,
       },
     ],
+    taskSummary: {
+      active: 2,
+      newTask: 1,
+      completed: 1,
+      failed: 0,
+    },
   },
   {
     id: 2,
+    firstname: "Vivaan",
     email: "employee2@example.com",
     password: "123",
     tasks: [
@@ -72,9 +83,16 @@ const employees = [
         failed: false,
       },
     ],
+    taskSummary: {
+      active: 2,
+      newTask: 1,
+      completed: 1,
+      failed: 0,
+    },
   },
   {
     id: 3,
+    firstname: "Ishaan",
     email: "employee3@example.com",
     password: "123",
     tasks: [
@@ -109,9 +127,16 @@ const employees = [
         failed: false,
       },
     ],
+    taskSummary: {
+      active: 2,
+      newTask: 1,
+      completed: 1,
+      failed: 0,
+    },
   },
   {
     id: 4,
+    firstname: "Vihaan",
     email: "employee4@example.com",
     password: "123",
     tasks: [
@@ -146,9 +171,16 @@ const employees = [
         failed: false,
       },
     ],
+    taskSummary: {
+      active: 2,
+      newTask: 1,
+      completed: 1,
+      failed: 0,
+    },
   },
   {
     id: 5,
+    firstname: "Aaditya",
     email: "employee5@example.com",
     password: "123",
     tasks: [
@@ -183,6 +215,12 @@ const employees = [
         failed: false,
       },
     ],
+    taskSummary: {
+      active: 2,
+      newTask: 1,
+      completed: 1,
+      failed: 0,
+    },
   },
 ];
 
@@ -197,6 +235,8 @@ export const setLocalstorage = () => {
   localStorage.setItem("employees", JSON.stringify(employees));
   localStorage.setItem("admin", JSON.stringify(admin));
 };
+
+
 
 export const getLocalstorage = () => {
   const employees = JSON.parse(localStorage.getItem("employees"));

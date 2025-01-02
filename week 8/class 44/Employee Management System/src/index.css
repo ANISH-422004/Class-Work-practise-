@@ -24,3 +24,7 @@ html, body {
 #alltasks::-webkit-scrollbar{
     display: none;
 }
+
+#employesslist::-webkit-scrollbar{
+    display: none;
+}
