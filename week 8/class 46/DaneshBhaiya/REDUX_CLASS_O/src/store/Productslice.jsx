@@ -18,6 +18,9 @@ const productSlice = createSlice(
                 console.log(action);
                 
                 state.chacha.push(action.payload)
+            },
+            remove : (state , action)=>{
+              state.chacha.pop()
             }
             
         }
@@ -25,4 +28,4 @@ const productSlice = createSlice(
 )
 
 export default productSlice.reducer
-export const {add} = productSlice.actions
+export const {add,remove} = productSlice.actions
