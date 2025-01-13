@@ -13,7 +13,11 @@ app.get("/",(req,res)=>{
     res.render("Home",{data:data})
 
 })
+// In Express.js, res.render(view, [locals], [callback]) is used to render a view and send the rendered HTML as the response. Here's what each parameter means:
 
+// view: A string specifying the name of the view file (without the file extension) that you want to render.
+// locals: An optional object containing local variables to pass to the view. These variables can be used within the template.
+// callback: An optional function that gets called after the view is rendered, but before sending the response.
 
 
 app.get("*",(req,res)=>{
