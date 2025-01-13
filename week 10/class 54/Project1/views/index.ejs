@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khaatabook</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+
+  <body class="bg-gray-50 min-h-screen font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md p-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-gray-800">Khaatabook</h1>
+      <div>
+        <a href="/" class="text-blue-500 hover:text-blue-700 transition duration-300 mr-4">Home</a>
+        <a href="/create" class="text-blue-500 hover:text-blue-700 transition duration-300">Create New Hisaab</a>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container mx-auto mt-8 px-6">
+      <h2 class="text-3xl font-semibold mb-6 text-gray-800">
+        All Hisaab Kitaab
+      </h2>
+
+      <!-- Check if there are no files -->
+      <% if(files.length <= 0){ %>
+        <p class="text-center text-gray-500 text-xl">No Hisaab found. Please create one.</p>
+      <% } %>
+
+      <!-- Render files if available -->
+      <% if(files.length <= 0){ %>
+        <p class="text-center text-gray-500 text-xl">No Hisaab found. Please create one.</p>
+      <% } %>
+
+      <!-- Render files if available -->
+<!-- Render files if available -->
+<% files.forEach(file => { %>
+    <div class="bg-white p-4 rounded-lg shadow-lg mb-4 flex justify-between items-center transition duration-300 hover:shadow-xl">
+      <div class="flex items-center gap-4">
+        <span class="text-lg font-medium text-gray-800">
+          <% let filename = file.split(".")[0]; %> <%= filename %>
+        </span>
+        <a href="/view/<%= filename %>" class="bg-white text-blue-500 rounded-full hover:shadow-lg h-10 w-10 flex items-center justify-center border border-blue-500">
+          <i class="fas fa-arrow-right w-5 h-5"></i>
+        </a>
+      </div>
+  
+      <!-- Action buttons -->
+      <div class="flex items-center space-x-4">
+        <!-- Edit button -->
+        <a href="/edit/<%= filename %>" class="text-gray-600 hover:text-blue-500 transition duration-300">
+          <i class="fas fa-edit w-5 h-5"></i>
+        </a>
+  
+        <!-- Delete button -->
+        <a href="/delete/<%= filename %>" class="text-gray-600 hover:text-red-500 transition duration-300">
+          <i class="fas fa-trash-alt w-5 h-5"></i>
+        </a>
+      </div>
+    </div>
+  <% }) %>
+  
+    
+    </div>
+
+  </body>
+</html>
