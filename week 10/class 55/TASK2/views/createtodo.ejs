@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Todo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- Navbar -->
+  <header class="bg-blue-600 text-white py-4">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <h1 class="text-2xl font-bold">Todo App</h1>
+      <nav>
+        <a href="/" class="px-4 py-2 hover:bg-blue-700 rounded">Home</a>
+        <a href="/show-todo" class="px-4 py-2 hover:bg-blue-700 rounded">Show Todos</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Create Todo Section -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Create a New Todo</h2>
+      <form action="/created" method="POST" class="bg-gray-50 rounded shadow-md p-6">
+        <div class="mb-4">
+          <label for="todo-text" class="block text-gray-700 font-bold mb-2">Todo Text:</label>
+          <input type="text" id="todo-text" name="todo-text" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Enter your todo..." required>
+        </div>
+        <div class="mb-4">
+          <label for="todo-status" class="block text-gray-700 font-bold mb-2">Status:</label>
+          <select id="todo-status" name="todo-status" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600">
+            <option value="pending">Pending</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Add Todo</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white py-4">
+    <div class="container mx-auto text-center px-4">
+      <p>&copy; 2025 Todo App. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
