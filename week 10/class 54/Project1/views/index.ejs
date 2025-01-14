@@ -28,10 +28,7 @@
         All Hisaab Kitaab
       </h2>
 
-      <!-- Check if there are no files -->
-      <% if(files.length <= 0){ %>
-        <p class="text-center text-gray-500 text-xl">No Hisaab found. Please create one.</p>
-      <% } %>
+
 
       <!-- Render files if available -->
       <% if(files.length <= 0){ %>
@@ -46,7 +43,7 @@
         <span class="text-lg font-medium text-gray-800">
           <% let filename = file.split(".")[0]; %> <%= filename %>
         </span>
-        <a href="/view/<%= filename %>" class="bg-white text-blue-500 rounded-full hover:shadow-lg h-10 w-10 flex items-center justify-center border border-blue-500">
+        <a href="/hisaab/<%= filename %>" class="bg-white text-blue-500 rounded-full hover:shadow-lg h-10 w-10 flex items-center justify-center border border-blue-500">
           <i class="fas fa-arrow-right w-5 h-5"></i>
         </a>
       </div>

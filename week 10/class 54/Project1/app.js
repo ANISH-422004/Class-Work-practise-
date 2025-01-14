@@ -53,14 +53,13 @@ app.post("/createhisaab", (req, res) => {
 
 
 app.get("/edit/:filename", (req, res) => {
-    fs.readFile(`./hisaab/${req.params.filename}.txt`,"utf-8",(err,data)=>{
+    fs.readFile(`./hisaab/${req.params.filename}.txt`, "utf-8", (err, data) => {
         if (err) {
             res.status(500).send(err.message)
         }
-        console.log(data);
         res.render("edit", { filename: req.params.filename, data });
-        
-        
+
+
     })
 
 })
@@ -75,6 +74,34 @@ app.post("/edit/:filename", (req, res) => {
         res.redirect("/"); // Redirect to homepage after successful edit
     });
 });
+
+
+
+app.get("/hisaab/:filename", (req, res) => {
+
+    fs.readFile(`./hisaab/${req.params.filename}.txt`, "utf-8", (err, data) => {
+        if (err) {
+            res.status(500).send(err.message)
+        }
+        res.render("hisaab", { filename: req.params.filename, data });
+
+
+    })
+})
+
+
+
+app.get("/delete/:filename", (req, res) => {
+
+    fs.unlink(`./hisaab/${req.params.filename}.txt`, (err) => {
+        if (err) {
+            res.status(500).send(err.message)
+        }
+        res.redirect("/");
+
+
+    })
+})
 
 
 
