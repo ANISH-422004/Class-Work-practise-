@@ -6,3 +6,4 @@ app.listen(3000,()=>{
 
 
 // Db connect
+const connect = require("./src/db/db")()

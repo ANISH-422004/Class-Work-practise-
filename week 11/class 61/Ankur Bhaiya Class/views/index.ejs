@@ -1,13 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    <h1>HomePage</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-gradient-to-r from-purple-500 to-indigo-600 min-h-screen flex flex-col items-center"
+  >
+    <!-- Navbar -->
+    <nav
+      class="w-full bg-white shadow-md p-4 flex justify-between items-center"
+    >
+      <h1 class="text-2xl font-bold text-gray-800">User Management</h1>
+      <a
+        href="/create-user"
+        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+      >
+        Create User
+      </a>
+    </nav>
 
-</body>
+    <!-- Main Content -->
+    <div class="w-full max-w-4xl mt-10">
+      <h1 class="text-3xl text-white font-bold mb-6 text-center">All Users</h1>
+
+      <!-- Dummy User Card -->
+
+
+      <% users.map((u)=>{ %> 
+        <div
+        class="bg-white p-6 rounded-lg shadow-lg flex justify-between items-center mt-1"
+      >
+        <h2 class="text-xl font-semibold text-gray-800"><%= u.name %></h2>
+        <div class="flex space-x-2">
+          <a
+            href="/edit-user/<%= u._id %>"
+            class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 transition"
+          >
+            Edit
+          </a>
+          <a
+            href="/delete-user/<%= u._id %>"
+            class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition"
+          >
+            Delete
+          </a>
+          <a
+            href="/profile/<%= u._id %>"
+            class="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600 transition"
+          >
+            Show Profile
+          </a>
+        </div>
+      </div>
+        
+      <% }) %>
+    </div>
+  </body>
 </html>
