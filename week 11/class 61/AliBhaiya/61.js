@@ -55,16 +55,31 @@
 
 //Q. find Factor of a number n  {factors will be found till n/2  except 1 and n itself } 
 
-let i =1
-function factor(n, i) {
-    if (i > Math.floor(n/2)){
+// let i =1
+// function factor(n, i) {
+//     if (i > Math.floor(n/2)){
 
-        console.log(n)
-        return
-    }
+//         console.log(n)
+//         return
+//     }
 
-    if(n % i ==0) console.log(i);    
-    factor(n, i + 1)
- }
+//     if(n % i ==0) console.log(i);    
+//     factor(n, i + 1)
+//  }
 
- factor(50,i)
+//  factor(50,i)
+
+
+//Q. find Factor of a number n  {till sqrt(n)/2 } 
+// function factors(n,i=0) {
+//     if(i>Math.floor(Math.sqrt(n))) return
+//     if(n%i===0) {
+//         console.log(i);
+//         console.log(n/i);
+        
+//     }
+//     return factors(n,i+1)
+    
+// }
+
+// factors(10)
