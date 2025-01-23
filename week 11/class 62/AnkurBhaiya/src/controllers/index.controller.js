@@ -26,7 +26,7 @@ module.exports.CreateUserController = async(req, res) => {
 module.exports.showPostsController = async(req, res) => {
     try {
         const posts = await postsModel.find()
-        console.log(posts);
+       
         
         res.render('posts', {posts:posts})
     } catch (error) {
@@ -71,4 +71,17 @@ module.exports.likeController = async(req,res)=>{
     }
 
 
+}
+
+module.exports.deleteController = async(req,res)=>{
+    try {
+        const dbID = req.params.dbID
+        const deletedPost = await postsModel.findOneAndDelete({_id:dbID})
+        console.log("deleted post", deletedPost);
+        res.redirect("/home")
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
 }
