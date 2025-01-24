@@ -9,4 +9,4 @@ app.listen(3000, () => {
 
 //connsct to mongoDB
 const connnect = require("./src/db/db")
-connnect();
+connnect(); 
