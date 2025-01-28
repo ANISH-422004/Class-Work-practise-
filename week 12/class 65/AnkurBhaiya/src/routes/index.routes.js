@@ -4,6 +4,8 @@ const indexControllers = require('../controllers/index.controller');
 
 router.get('/',  indexControllers.indexController )
 router.post('/create-user',  indexControllers.CreateUserController )
+router.get('/login',indexControllers.showloginpageController)
+router.post('/login',indexControllers.loginController)
 router.get('/home',  indexControllers.showPostsController )
 router.get('/create-post',  indexControllers.showCreatePostController )
 router.post('/create-post',  indexControllers.CreatePostcontroller )
