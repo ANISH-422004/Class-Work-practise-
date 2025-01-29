@@ -9,5 +9,7 @@ router.post("/login", indexcontroller.loginUserController)
 router.post("/:username/create/post", indexcontroller.createpostController)
 router.get("/token",indexcontroller.tokenGenerateController)
 router.get("/decodedtokendata",indexcontroller.tokendDecoderController)
+router.get("/setcookie",indexcontroller.setCookieController)
+router.get("/readcookie",indexcontroller.readCookieController)
 
 module.exports = router

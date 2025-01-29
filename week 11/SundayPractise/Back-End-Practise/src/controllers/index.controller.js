@@ -76,3 +76,15 @@ module.exports.tokendDecoderController = (req,res)=>{
     const data = jwt.decode('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuaXNoQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiQW5pc2hAMTIzIiwiaWF0IjoxNzM4MDk1MDYzfQ.Z8QEc0b7gPSvlTxj4YYFmYaRs1kooAs0o2BKHU_L6fA')
     res.send(data)
 }
+
+module.exports.setCookieController = (req,res)=>{
+    // res.cookie("name","anish")
+    // res.cookie("name","anish",{maxAge:2000})
+    res.cookie("name","anish",{httpOnly:true,secure:true})
+    res.send("CookieSet kardiye browser Par")
+}
+
+module.exports.readCookieController = (req,res)=>{
+    res.send(req.cookies)
+   
+}
