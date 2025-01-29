@@ -9,3 +9,6 @@ app.listen(3000,()=>{
 
 
 //connect to DataBase
+
+
+const connect = require ("./src/db/db")()
