@@ -1,7 +1,7 @@
 const userModel = require('../models/user.model.js');
 const postModel = require('../models/post.model.js');
 const bcrypt = require('bcrypt');
-
+const jwt = require("jsonwebtoken")
 module.exports.indexcontroller = (req, res) => {
     res.send("hello")
 }
@@ -64,4 +64,15 @@ module.exports.createpostController = async (req, res) => {
 
 
 
+}
+
+
+module.exports.tokenGenerateController = (req,res)=>{
+    const token = jwt.sign({email:"anish@gmail.com" , password : "Anish@123" } , "xcalibar" )
+    res.send(token)
+}
+
+module.exports.tokendDecoderController = (req,res)=>{
+    const data = jwt.decode('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuaXNoQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiQW5pc2hAMTIzIiwiaWF0IjoxNzM4MDk1MDYzfQ.Z8QEc0b7gPSvlTxj4YYFmYaRs1kooAs0o2BKHU_L6fA')
+    res.send(data)
 }
