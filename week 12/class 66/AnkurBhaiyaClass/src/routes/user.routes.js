@@ -9,6 +9,8 @@ router.post('/signin',userControllers.signinController );
 // login 
 router.post('/login', userControllers.loginController);
 
+//getprofile
+router.get('/profile',userControllers.profileController)
 
 
 
