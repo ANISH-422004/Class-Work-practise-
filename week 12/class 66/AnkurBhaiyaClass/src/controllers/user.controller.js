@@ -46,7 +46,7 @@ module.exports.loginController = async(req,res)=>{
         const isPassOk= await bcrypt.compare(password,user.password)
 
         if (!isPassOk) return res.send("Either email or password is invalid")
-
+ 
         const token =  JWT.sign(
             {
                 _id:user._id,
