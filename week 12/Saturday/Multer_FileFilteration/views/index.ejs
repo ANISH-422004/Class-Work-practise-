@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="w-full bg-white p-4 shadow-md flex justify-between items-center fixed top-0 left-0">
+        <h1 class="text-xl font-bold text-gray-800">Image Uploader</h1>
+        <a href="/uploaded" class="py-2 px-4 bg-green-500 text-white rounded-md font-semibold hover:bg-green-600 transition duration-300">
+            View Uploaded Images
+        </a>
+    </nav>
+
+    <!-- Upload Form -->
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md mt-16">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Upload an Image</h2>
+        
+        <form action="/upload" method="POST" enctype="multipart/form-data" class="space-y-4">
+            <div>
+                <label class="block text-gray-700 font-semibold">Select Image</label>
+                <input type="file" name="image" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+
+            <button type="submit" class="w-full py-2 px-4 bg-blue-500 text-white rounded-md font-semibold hover:bg-blue-600 transition duration-300">
+                Upload
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>
