@@ -1,12 +1,6 @@
 const multer = require('multer');
-const path = require('path');
 
-
-    
-
-
-
-// Initialize multer with the defined storage engine
+const storage = multer.memoryStorage()
 const upload = multer({ storage: storage });
 
 module.exports = upload;
