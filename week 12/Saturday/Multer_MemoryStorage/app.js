@@ -18,13 +18,14 @@ app.get('/', (req, res) => {
 });
 
 app.post('/upload', upload.single('image'), async (req, res) => {
+
     try {
         if (!req.file) {
             return res.status(400).send('No file uploaded');
         }
-
+        console.log(req.file)
         const newUser = new userModel({
-            name: req.body.name,
+            name: req.file.originalname,
             image: req.file.buffer
         });
 
@@ -41,7 +42,6 @@ app.get('/uploaded', async(req, res) => {
     
 
     const files = await userModel.find()
-    console.log(files);
     res.render('upload', { files });
 
 
