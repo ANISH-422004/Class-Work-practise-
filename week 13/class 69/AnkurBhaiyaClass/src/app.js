@@ -3,6 +3,7 @@ const app  = express()
 const indexRoutes = require("./routes/index.routes")
 const userRoutes = require("./routes/user.routes")
 const cookieParser = require("cookie-parser")
+const env = require('dotenv').config()
 
 app.set("view engine","ejs")
 app.set('views','./src/views')
