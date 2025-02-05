@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-black text-white flex justify-center items-center h-screen m-0">
+    <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-80">
+        <h2 class="text-center text-green-500 mb-6">Create a New Post</h2>
+        <form action="/user/create-post" method="POST" >
+            <div class="mb-4">
+                <label for="image" class="block mb-2">Select Image</label>
+                <input type="text" id="image" name="image" accept="image/*" required 
+                    class="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:bg-gray-600">
+            </div>
+            <div class="mb-4">
+                <label for="caption" class="block mb-2">Caption</label>
+                <textarea id="caption" name="caption" required 
+                    class="w-full p-2 rounded bg-gray-700 text-white focus:outline-none focus:bg-gray-600" rows="4"></textarea>
+            </div>
+            <button type="submit" class="w-full p-2 rounded bg-green-500 text-black font-semibold hover:bg-green-600">
+                Upload
+            </button>
+        </form>
+    </div>  
+</body>
+</html>
