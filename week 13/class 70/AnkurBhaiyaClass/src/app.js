@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const cookieParser = require("cookie-parser")
 const env = require("dotenv").config()
+const morgan = require("morgan")
 const indexRoutes = require("./Routes/index.routes")
 const userRoutes = require("./Routes/user.routes")
 
@@ -11,7 +12,7 @@ app.set('views','./src/views')
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
-
+app.use(morgan('dev'))
 
 
 

@@ -60,7 +60,7 @@ module.exports.feedController = async (req, res) => {
 
         const posts = await postModel.find()
 
-        res.render("feed", {  posts });
+        res.render("feed", { posts });
     }
     catch (error) {
         console.log(error)
@@ -86,7 +86,7 @@ module.exports.loginController = async (req, res) => {
 
         if (!user) {
             console.log("user Does not exists")
-            return res.render("/user/regiester")
+            return res.render("/user/register")
         }
 
         const isPassOk = await bcrypt.compare(password, user.password);
@@ -111,19 +111,18 @@ module.exports.loginController = async (req, res) => {
 
 
 module.exports.ShowPostController = (req, res) => {
-    res.render("createpost")
+    try {
+        res.render("createpost")
+
+    } catch (error) {
+        console.log(error)
+        res.redirect("/user/login")
+    }
 }
 
 module.exports.createPostController = async (req, res) => {
     try {
-        console.log(req.body)
         const { image, caption } = req.body
-        const token = req.cookies.token
-        if (!token) return res.redirect("/user/login")
-
-        const decoded = jwt.verify(token, process.env.JWT_SECRET)
-        if (!decoded) return res.redirect("/user/login")
-
         const post = await postModel.create({
             image,
             caption,
