@@ -25,9 +25,11 @@ const client = redis.createClient({
     }
 });
 
-client.on('error', err => console.log('Redis Client Error', err));
+client.on("connect", () => {
+    console.log("connected to redis")
+});
 
-// await client.connect();
+client.connect()
 
 
 
@@ -39,13 +41,37 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.post('/create', async(req, res) => {
+app.post('/create', async (req, res) => {
     const { name, email, password } = req.body
     await userModel.create({
-        name,email,password
-    })  
+        name, email, password
+    })
     res.send(req.body)
 })
+
+
+app.get("/user/:id", async (req, res) => {
+
+    try {
+
+        let cashedData = await client.get(`user:profile:${req.params.id}`)
+        if (cashedData) {
+            console.log("cashed data sent ")
+            return res.send(JSON.parse(cashedData))
+
+        }
+        const user = await userModel.findOne({ _id: req.params.id })
+        await client.set(`user:profile:${user._id}`, JSON.stringify(user))
+        res.send(user)
+        console.log("DB sent the data ")
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+
+
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
