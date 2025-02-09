@@ -41,8 +41,8 @@ module.exports.loginController = async (req, res) => {
         console.log(token)
         res.cookie("token", token, {
             httpOnly: true,   // ✅ Prevents frontend JS from accessing the cookie
-            secure: false,    // ✅ Set to `true` in production with HTTPS
-            sameSite: "lax",  // ✅ Allows cross-site requests
+            secure: "production",    // ✅ Set to `true` in production with HTTPS
+            sameSite: "strict",  // ✅ Allows cross-site requests
         });
 
         console.log(1)

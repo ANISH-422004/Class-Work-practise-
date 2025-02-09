@@ -5,6 +5,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import Fee from './components/Fee'
 import Recipie from './components/Recipie'
+import ShowRecipe from './components/ShowRecipe'
 
 const App = () => {
   return (
@@ -15,8 +16,8 @@ const App = () => {
       <Route path='/register' element={<Register/>} />
       <Route path='/login' element={<Login/>} />
       <Route path='/feed' element={<Fee/>} />
-      <Route path='/recipe/:id' element={<Recipie/>} />
-    
+      <Route path='/create' element={<Recipie/>} />
+      <Route path='recipedetails/:id' element={<ShowRecipe/>} />
       
       </Routes>
     </div>

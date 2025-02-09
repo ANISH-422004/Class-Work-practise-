@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
+import Home from "./Home";
 
 const Login = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -14,6 +16,7 @@ const Login = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  axios.defaults.withCredentials = true;
 
   // ✅ Handle Form Submission
   const handleSubmit = (e) => {
@@ -23,18 +26,18 @@ const Login = () => {
       .then((result) => {
         console.log(result);
         alert("Login successful!");
-        navigate("/feed")
+        navigate("/feed");
       })
       .catch((e) => {
-        alert(e.response.data.massage)
+        alert(e.response.data.massage);
         console.log(e);
       });
 
-      setFormData({
-        name: "",
-        email: "",
-        password: "",
-      });
+    setFormData({
+      name: "",
+      email: "",
+      password: "",
+    });
   };
 
   return (
@@ -43,6 +46,12 @@ const Login = () => {
         <h2 className="text-2xl font-bold text-green-600 text-center mb-6">
           Welcome Back! 🍽️
         </h2>
+        <button
+          onClick={() => navigate("/")}
+          className="absolute top-5 left-5 p-2 bg-white rounded-full shadow-md hover:bg-gray-200 transition"
+        >
+          <FaHome/>
+        </button>
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Email Field */}
           <div>

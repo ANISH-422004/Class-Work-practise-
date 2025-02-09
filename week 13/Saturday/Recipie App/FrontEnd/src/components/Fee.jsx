@@ -1,37 +1,27 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-// Dummy data (Replace with API data)
-const recipes = [
-  {
-    id: 1,
-    title: "Pumpkin Soup 🎃",
-    image: "https://source.unsplash.com/600x400/?pumpkin,soup",
-    description: "A delicious and creamy pumpkin soup perfect for fall!",
-  },
-  {
-    id: 2,
-    title: "Classic Spaghetti 🍝",
-    image: "https://source.unsplash.com/600x400/?pasta",
-    description: "A rich tomato-based spaghetti recipe with fresh basil.",
-  },
-];
 
 const Fee = () => {
   const navigate = useNavigate();
 
-
   const logoutHandler = () => {
-    axios.get("http://localhost:3000/user/logout", { withCredentials: true })
+    axios
+      .get("http://localhost:3000/user/logout", { withCredentials: true })
       .then(() => {
         alert("Logged out successfully!");
-        navigate("/")
+        navigate("/");
       })
       .catch((err) => console.log(err));
   };
 
-  
+  const [recipes, setRecipes] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:3000/recipe/allrecipe").then((response) => {
+      setRecipes(response.data.massage);
+      console.log(response.data.massage)
+    });
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-100 to-green-300">
@@ -70,7 +60,7 @@ const Fee = () => {
         <div className="grid md:grid-cols-2 gap-6">
           {recipes.map((recipe) => (
             <div
-              key={recipe.id}
+              key={recipe._id}
               className="bg-white shadow-lg rounded-lg overflow-hidden"
             >
               <img
@@ -80,7 +70,7 @@ const Fee = () => {
               />
               <div className="p-4">
                 <Link
-                  to={`/recipe/${recipe.id}`}
+                  to={`/recipedetails/${recipe._id}`}
                   className="text-xl font-semibold text-green-700 hover:underline"
                 >
                   {recipe.title}
