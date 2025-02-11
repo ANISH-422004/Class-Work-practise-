@@ -1,13 +1,16 @@
 const mongoose = require('mongoose');
+const jwt = require("jsonwebtoken")
+const config = require("../config/config")
+const bcrypt = require("bcrypt")
 
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
         trim: true,
-        unique:true,
-        minlength:[3,"userName must be at least 3 characters long"],
-        maxlength:[20,"userName must be at max 20 characters long"],
+        unique: true,
+        minlength: [3, "userName must be at least 3 characters long"],
+        maxlength: [20, "userName must be at max 20 characters long"],
 
     },
     email: {
@@ -49,6 +52,32 @@ const userSchema = new mongoose.Schema({
         default: Date.now
     }
 });
+
+
+// 🔹 **Instance Method:** Generate JWT Token (Works on a single user)
+userSchema.methods.generateToken = () => {
+    return jwt.sign({
+        id: this._id,
+        name: this.name,
+        email: this.email
+    }, config.JWT_SECRET)
+}
+
+
+// 🔹 **Static Method:** Verify JWT Token (Works on the model level)
+userSchema.statics.verifyToken = () => {
+    return jwt.verify(token, config.JWT_SECRET);
+}
+
+// 🔹 **Static Method:** Hash Password (Works on the model level)
+userSchema.statics.hashPassword = async function (password) {
+    return await bcrypt.hash(password, 10);
+};
+
+// 🔹 **Instance Method:** Compare Password (Works on a specific user)
+userSchema.methods.comparePassword = async function (enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password);
+};
 
 const UserModel = mongoose.model('User', userSchema);
 

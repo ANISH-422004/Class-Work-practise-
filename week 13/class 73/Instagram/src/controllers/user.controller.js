@@ -1,8 +1,4 @@
 const UserModel = require("../models/user.model")
-const jwt = require("jsonwebtoken")
-const bcrypt = require("bcrypt")
-const config = require("../config/config")
-const { use } = require("../app")
 
 module.exports.RegisterController = async (req, res) => {
     try {
@@ -20,7 +16,7 @@ module.exports.RegisterController = async (req, res) => {
 
         if (user) return res.status(400).json({ massage: `User Already Exists` })
 
-        const h_pass = await bcrypt.hash(password, 10)
+        const h_pass = await UserModel.hashPassword(password)
 
         const newuser = await UserModel.create({
             name,
@@ -28,12 +24,7 @@ module.exports.RegisterController = async (req, res) => {
             password: h_pass
         })
 
-        const token = jwt.sign({
-            id: newuser._id,
-            name: newuser.name,
-            email: newuser.email,
-
-        }, config.JWT_SECRET)
+        const token = newuser.generateToken()
 
         res.json({ token: token, newuser: newuser })
 
@@ -54,16 +45,11 @@ module.exports.LoginController = async (req, res) => {
 
         if (!userExists) return res.status(400).json({ massage: `Invalid Credentials` })
 
-        const isMatch = await bcrypt.compare(password, userExists.password)
+        const isMatch = await userExists.comparePassword(password)
 
         if (!isMatch) return res.status(400).json({ massage: `Invalid Credentials` })
 
-        const token = jwt.sign({
-            id: userExists._id,
-            name: userExists.name,
-            email: userExists.email,
-
-        }, config.JWT_SECRET)
+        const token = userExists.generateToken()
 
         res.json({ token: token, user: userExists })
 
