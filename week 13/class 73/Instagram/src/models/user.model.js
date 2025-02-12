@@ -55,14 +55,13 @@ const userSchema = new mongoose.Schema({
 
 
 // 🔹 **Instance Method:** Generate JWT Token (Works on a single user)
-userSchema.methods.generateToken = () => {
+userSchema.methods.generateToken = function () {
     return jwt.sign({
         id: this._id,
         name: this.name,
         email: this.email
-    }, config.JWT_SECRET)
-}
-
+    }, config.JWT_SECRET,); // Optional: Add expiration
+};
 
 // 🔹 **Static Method:** Verify JWT Token (Works on the model level)
 userSchema.statics.verifyToken = () => {
