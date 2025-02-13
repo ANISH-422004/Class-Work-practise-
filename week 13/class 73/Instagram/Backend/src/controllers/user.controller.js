@@ -4,7 +4,7 @@ module.exports.RegisterController = async (req, res) => {
     try {
         const { name, email, password } = req.body
 
-        if (!name || !email || !password) return res.status(400).json({ massage: `Either name , email , password is Empty` })
+        if (!name || !email || !password) return res.status(400).json({ message: `Either name , email , password is Empty` })
 
         const user = await UserModel.findOne({
 
@@ -14,7 +14,7 @@ module.exports.RegisterController = async (req, res) => {
             ]
         })
 
-        if (user) return res.status(400).json({ massage: `User Already Exists` })
+        if (user) return res.status(400).json({ message: `User Already Exists` })
 
         const h_pass = await UserModel.hashPassword(password)
 
@@ -30,7 +30,7 @@ module.exports.RegisterController = async (req, res) => {
 
     } catch (error) {
         console.log(error)
-        res.status(500).json({ massage: "Internal Server Error" })
+        res.status(500).json({ message: "Internal Server Error" })
     }
 }
 
@@ -39,15 +39,15 @@ module.exports.LoginController = async (req, res) => {
     try {
         const { email, password } = req.body
 
-        if (!email || !password) return res.status(400).json({ massage: `Either  email or password is Empty` })
+        if (!email || !password) return res.status(400).json({ message: `Either  email or password is Empty` })
 
         const userExists = await UserModel.findOne({ email })
 
-        if (!userExists) return res.status(400).json({ massage: `Invalid Credentials` })
+        if (!userExists) return res.status(400).json({ message: `Invalid Credentials` })
 
         const isMatch = await userExists.comparePassword(password)
 
-        if (!isMatch) return res.status(400).json({ massage: `Invalid Credentials` })
+        if (!isMatch) return res.status(400).json({ message: `Invalid Credentials` })
 
         const token = userExists.generateToken()
 
@@ -57,7 +57,7 @@ module.exports.LoginController = async (req, res) => {
 
     } catch (error) {
         console.log(error)
-        res.status(500).json({ massage: "Internal Server Error" })
+        res.status(500).json({ message: "Internal Server Error" })
     }
 }
 
@@ -71,7 +71,7 @@ module.exports.ProfileController = async (req, res) => {
 
     } catch (error) {
         console.log(error)
-        res.status(401).json({ massage: "Unauthorized" })
+        res.status(401).json({ message: "Unauthorized" })
 
     }
 }
