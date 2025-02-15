@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
 
@@ -19,7 +19,7 @@ const Register = () => {
         console.log(res);
         setError("");
         localStorage.setItem("token",res.data.token)
-        navigate("/login");
+        navigate("/profile");
       })
       .catch((e) => {
         console.error(e);
@@ -85,6 +85,9 @@ const Register = () => {
           <span className="font-semibold">Terms</span>,{" "}
           <span className="font-semibold">Data Policy</span>, and{" "}
           <span className="font-semibold">Cookies Policy</span>.
+        </p>
+        <p className="text-xs text-gray-500 text-center mt-4 ">
+          <Link to='/login' className="hover:text-blue-400" >Already Have a Account ? </Link>
         </p>
       </section>
     </main>
