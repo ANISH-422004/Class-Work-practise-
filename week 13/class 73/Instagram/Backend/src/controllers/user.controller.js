@@ -66,12 +66,12 @@ module.exports.LoginController = async (req, res) => {
 
 module.exports.ProfileController = async (req, res) => {
     try {
-
-        res.json(req.user)
+        const populatedUser = await req.user.populate('posts')
+        res.status(200).json({user:populatedUser})
 
     } catch (error) {
         console.log(error)
-        res.status(401).json({ message: "Unauthorized" })
+        res.status(401).json({ message: "Internal Server Error" })
 
     }
 }
