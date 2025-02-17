@@ -75,3 +75,14 @@ module.exports.ProfileController = async (req, res) => {
 
     }
 }
+
+
+
+module.exports.SendResponseForAuthentication = (req,res)=>{
+    try {
+        res.status(200).json({message : 'Authenticated'})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message : "Internal Server Error"})
+    }
+}

@@ -6,5 +6,5 @@ const authUser = require("../middlewares/authusers")
 router.post('/register', userController.RegisterController );
 router.post('/login', userController.LoginController );
 router.get('/profile', authUser.authUser ,userController.ProfileController );
-
+router.get('/authenticate',authUser.authUser , userController.SendResponseForAuthentication)
 module.exports = router;
