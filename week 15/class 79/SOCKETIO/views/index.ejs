@@ -4,35 +4,46 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     </head>
-    <body>
-        <textarea id="messageInput" placeholder="Type a message..."></textarea>
-
+    <body class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        <textarea id="messageInput" placeholder="Type a message..." class="p-2 border border-gray-300 rounded mb-4 w-1/2"></textarea>
+        <div class="flex space-x-4 mb-4">
+            <button id="connectBtn" class="px-4 py-2 bg-blue-500 text-white rounded">Connect</button>
+            <button id="disconnectBtn" class="px-4 py-2 bg-red-500 text-white rounded">Disconnect</button>
+        </div>
+        
         <script
             src="https://cdn.socket.io/4.8.1/socket.io.min.js"
             integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+"
             crossorigin="anonymous"
         ></script>
         <script>
-            var socket = io();
+            var socket;
 
-            document.getElementById('messageInput').addEventListener('input', function() {
-                socket.emit('typing');
+            document.getElementById('connectBtn').addEventListener('click', function() {
+                socket = io();
+                socket.emit("abcd");
+                socket.on("joinedChatRoom", (data) => {
+                    console.log(data);
+                });
+                socket.on("LeftChatRoom", (data) => {
+                    console.log(data);
+                });
+                socket.on("Typing", (data) => {
+                    console.log(`${data} is Typing....`);
+                });
+                document.getElementById('messageInput').addEventListener('input', function() {
+                    socket.emit('typing');
+                });
             });
 
-            socket.emit("abcd");
-            socket.on("joinedChatRoom", (data) => {
-                console.log(data);
+            document.getElementById('disconnectBtn').addEventListener('click', function() {
+                if (socket) {
+                    socket.disconnect();
+                    console.log('Disconnected from socket');
+                }
             });
-            socket.on("LeftChatRoom", (data) => {
-                console.log(data);
-            });
-
-            socket.on("Typing",(data)=>{
-                console.log(`${data} id Typing....`)
-            })
-
-
         </script>
     </body>
 </html>
