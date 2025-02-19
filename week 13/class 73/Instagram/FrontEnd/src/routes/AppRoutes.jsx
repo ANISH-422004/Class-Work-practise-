@@ -4,16 +4,15 @@ import Register from "../views/register/Register";
 import Login from "../views/login/Login";
 import Profile from "../views/profile/Profile";
 import WithAuth from "../components/WithAuth";
-
-const ProfileWithAuth = WithAuth(Profile); // Define it outside the component
+import CreatePost from "../views/create-Post.jsx/CreatePost";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/profile" element={<ProfileWithAuth />} />
-      {/* This now correctly passes props */}
+      <Route path="/profile" element={<WithAuth><Profile /></WithAuth>} />
+      <Route path="/create-post" element={<WithAuth><CreatePost/></WithAuth>} />
     </Routes>
   );
 };
