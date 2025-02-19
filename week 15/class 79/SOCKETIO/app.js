@@ -14,15 +14,26 @@ app.set('view engine', 'ejs')
 io.on("connection", function (socket) {
     console.log("connected ID", socket.id)
 
-    socket.on("abcd",()=>{
+    socket.on("abcd", () => {
         console.log(`Hey Welcome to chat ${socket.id}`)
+        io.emit("joinedChatRoom",  `${socket.id} Joined the server`)
     })
 
 
-    socket.on("disconnect",()=>{
-        console.log("disconnected ID : " , socket.id)
+    socket.on("disconnect", () => {
+        console.log("disconnected ID : ", socket.id)
+        io.emit("LeftChatRoom",  `${socket.id} Left the server`)
     })
+
+
+    socket.on("typing",()=>{
+        socket.broadcast.emit("Typing" , socket.id)
+    })
+
+
 })
+
+
 
 app.get("/", (req, res) => {
     res.render("index")

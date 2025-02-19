@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <textarea id="messageInput" placeholder="Type a message..."></textarea>
+
+        <script
+            src="https://cdn.socket.io/4.8.1/socket.io.min.js"
+            integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+"
+            crossorigin="anonymous"
+        ></script>
+        <script>
+            var socket = io();
+
+            document.getElementById('messageInput').addEventListener('input', function() {
+                socket.emit('typing');
+            });
+
+            socket.emit("abcd");
+            socket.on("joinedChatRoom", (data) => {
+                console.log(data);
+            });
+            socket.on("LeftChatRoom", (data) => {
+                console.log(data);
+            });
+
+            socket.on("Typing",(data)=>{
+                console.log(`${data} id Typing....`)
+            })
 
 
-
-
-
-
-
-
-
-    <script
-      src="https://cdn.socket.io/4.8.1/socket.io.min.js"
-      integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+"
-      crossorigin="anonymous"
-    ></script>
-    <script>
-      var socket =  io();
-      socket.emit("abcd")
-    </script>
-
-
-  </body>
+        </script>
+    </body>
 </html>
