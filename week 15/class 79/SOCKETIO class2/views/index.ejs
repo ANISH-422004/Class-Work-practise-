@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+
+            <body>
+                <div class="container mx-auto mt-5">
+                    <button class="eventbtn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Send Some Event
+                    </button>
+                </div>
+        
+
+
+        <script
+            src="https://cdn.socket.io/4.8.1/socket.io.min.js"
+            integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+"
+            crossorigin="anonymous"
+        ></script>
+        <script>
+            let socket = io()
+            document.querySelector(".eventbtn").addEventListener("click",(e)=>{
+                socket.emit("CustomEvent")
+            })
+        </script>
+ 
+    </body>
+</html>
