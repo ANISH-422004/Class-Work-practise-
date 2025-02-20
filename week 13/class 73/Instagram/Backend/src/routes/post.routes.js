@@ -6,5 +6,4 @@ const router = express.Router();
 
 router.post('/create', userMiddleware.authUser,postControllers.createPostController)
 
-
 module.exports = router;

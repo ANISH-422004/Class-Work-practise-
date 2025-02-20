@@ -5,6 +5,7 @@ import Login from "../views/login/Login";
 import Profile from "../views/profile/Profile";
 import WithAuth from "../components/WithAuth";
 import CreatePost from "../views/create-Post.jsx/CreatePost";
+import PersonalFeed from "../views/PersonalFeed/PersonalFeed";
 
 const AppRoutes = () => {
   return (
@@ -13,6 +14,7 @@ const AppRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/profile" element={<WithAuth><Profile /></WithAuth>} />
       <Route path="/create-post" element={<WithAuth><CreatePost/></WithAuth>} />
+      <Route path="/feed" element={<WithAuth><PersonalFeed/></WithAuth>} /> 
     </Routes>
   );
 };

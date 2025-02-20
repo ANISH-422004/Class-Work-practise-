@@ -67,6 +67,7 @@ module.exports.LoginController = async (req, res) => {
 module.exports.ProfileController = async (req, res) => {
     try {
         const populatedUser = await req.user.populate('posts')
+        //.populate() is a Mongoose method used to replace references (ObjectIds) in a document with actual data from the referenced collection.
         res.status(200).json({user:populatedUser})
 
     } catch (error) {
