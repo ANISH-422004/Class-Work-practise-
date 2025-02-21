@@ -60,16 +60,20 @@ userSchema.methods.generateToken = function () {
         id: this._id,
         name: this.name,
         email: this.email
-    }, config.JWT_SECRET,); // Optional: Add expiration
+    }, config.JWT_SECRET,{expiresIn:config.JWT_EXPIERES_IN}); // Optional: Add expiration
 };
 
 // 🔹 **Static Method:** Verify JWT Token (Works on the model level)
-userSchema.statics.verifyToken = () => {
+userSchema.statics.verifyToken = (token) => {
+    if(!token){
+        throw new Error("Token is required")
+    }
     return jwt.verify(token, config.JWT_SECRET);
 }
 
 // 🔹 **Static Method:** Hash Password (Works on the model level)
 userSchema.statics.hashPassword = async function (password) {
+    if(!password) throw new Error("Password is required")
     return await bcrypt.hash(password, 10);
 };
 

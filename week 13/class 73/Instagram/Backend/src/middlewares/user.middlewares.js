@@ -1,16 +1,15 @@
-const jwt = require("jsonwebtoken")
+
 const UserModel = require("../models/user.model")
-const config = require("../config/config")
 
 
 module.exports.authUser = async (req, res, next) => {
     try {
-        
+
         const token = req.headers.authorization?.split(" ")[1]  // if split is applied on undefined then js will throw error
 
         if (!token) return res.status(401).json({ massage: "Unauthorized" })
 
-        const decoded_token = await jwt.verify(token, config.JWT_SECRET)
+        const decoded_token = await UserModel.verifyToken(token)
 
         if (!decoded_token) res.status(401).json({ massage: "Unauthorized" })
 
