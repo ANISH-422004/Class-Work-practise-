@@ -2,7 +2,7 @@ const { redis } = require("../services/redis.service")
 const UserModel = require("../models/user.model")
 const validationResult = require("express-validator").validationResult
 const userService = require("../services/user.service")
-
+const postModel = require("../models/posts.model")
 
 module.exports.RegisterController = async (req, res) => {
     try {
