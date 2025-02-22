@@ -25,6 +25,26 @@ const Profile = () => {
       });
   }, []);
 
+  const LogOutHandeler = () => {
+    axios
+      .get(`http://localhost:3000/users/logout`, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        localStorage.setItem("token", "");
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.error("Logout error:", error);
+        // Even if logout call fails, you might want to remove token and redirect
+        localStorage.removeItem("token");
+        navigate("/login");
+      });
+  };
+
   return user ? (
     <div className="flex bg-gray-50 min-h-screen">
       {/* Sidebar (Fixed & Full Height) */}
@@ -62,10 +82,7 @@ const Profile = () => {
                 <div className="absolute right-0 mt-2 w-32 bg-white shadow-md rounded-md z-10">
                   <button
                     className="w-full text-left px-4 py-2 hover:bg-gray-100"
-                    onClick={() => {
-                      localStorage.setItem("token", "");
-                      navigate("/login");
-                    }}
+                    onClick={() => LogOutHandeler()}
                   >
                     Logout
                   </button>
