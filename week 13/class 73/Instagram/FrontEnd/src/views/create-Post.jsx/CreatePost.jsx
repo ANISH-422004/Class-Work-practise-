@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
-import SideNav from '../../components/SideNav';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
+import SideNav from "../../components/SideNav";
 
 const CreatePost = () => {
-  const [media, setMedia] = useState('');
-  const [mediaPreview, setMediaPreview] = useState('');
-  const [caption, setCaption] = useState('');
-  const [error, setError] = useState('');
+  const [media, setMedia] = useState("");
+  const [mediaPreview, setMediaPreview] = useState("");
+  const [caption, setCaption] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleFileChange = (e) => {
@@ -19,35 +19,52 @@ const CreatePost = () => {
   };
 
   const handleGenerateCaption = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/ai/generateCaption');
-      setCaption(response.data.caption);
-    } catch (error) {
-      setError('Failed to generate caption.');
+    if (!media) {
+      setError("Please select an image first.");
+      return;
     }
+
+    const formData = new FormData();
+    formData.append("image", media); // Ensure this matches the backend key
+
+    axios
+      .post("http://localhost:3000/ai/generateCaption", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setCaption(response.data.caption);
+        setError("");
+      })
+      .catch((error) => {
+        console.error(error);
+        setError("Failed to generate caption.");
+      });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!media) {
-      setError('Please select a media file.');
+      setError("Please select a media file.");
       return;
     }
 
     const formData = new FormData();
-    formData.append('media', media);
-    formData.append('caption', caption);
+    formData.append("media", media);
+    formData.append("caption", caption);
 
     try {
-      await axios.post('http://localhost:3000/posts/create', formData, {
+      await axios.post("http://localhost:3000/posts/create", formData, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "multipart/form-data",
         },
       });
-      navigate('/profile');
+      navigate("/profile");
     } catch (error) {
-      setError(error.response?.data?.message || 'Something went wrong!');
+      setError(error.response?.data?.message || "Something went wrong!");
     }
   };
 
@@ -67,8 +84,14 @@ const CreatePost = () => {
             AICaption
           </Link>
 
-          <h2 className="text-center text-xl font-semibold mb-4">Create Post</h2>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <h2 className="text-center text-xl font-semibold mb-4">
+            Create Post
+          </h2>
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-4"
+            encType="multipart/form-data"
+          >
             <input
               type="file"
               accept="image/*, video/*"
@@ -78,10 +101,17 @@ const CreatePost = () => {
 
             {mediaPreview && (
               <div className="w-full flex justify-center">
-                {media.type?.startsWith('image/') ? (
-                  <img src={mediaPreview} alt="Preview" className="object-cover w-[320px] h-[400px] rounded-md" />
+                {media.type?.startsWith("image/") ? (
+                  <img
+                    src={mediaPreview}
+                    alt="Preview"
+                    className="object-cover w-[320px] h-[400px] rounded-md"
+                  />
                 ) : (
-                  <video controls className="object-cover w-[320px] h-[400px] rounded-md">
+                  <video
+                    controls
+                    className="object-cover w-[320px] h-[400px] rounded-md"
+                  >
                     <source src={mediaPreview} type={media.type} />
                   </video>
                 )}
@@ -94,7 +124,9 @@ const CreatePost = () => {
               onChange={(e) => setCaption(e.target.value)}
               className="border p-2 rounded-md w-full resize-none h-20"
             />
-            {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+            {error && (
+              <p className="text-red-500 text-sm text-center">{error}</p>
+            )}
 
             <button
               type="submit"
