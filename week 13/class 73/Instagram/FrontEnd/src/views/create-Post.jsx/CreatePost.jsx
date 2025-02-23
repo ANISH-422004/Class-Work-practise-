@@ -8,6 +8,8 @@ const CreatePost = () => {
   const [mediaPreview, setMediaPreview] = useState("");
   const [caption, setCaption] = useState("");
   const [error, setError] = useState("");
+  const [loadingCaption, setLoadingCaption] = useState(false);
+  const [posting, setPosting] = useState(false);
   const navigate = useNavigate();
 
   const handleFileChange = (e) => {
@@ -24,24 +26,23 @@ const CreatePost = () => {
       return;
     }
 
-    const formData = new FormData();
-    formData.append("image", media); // Ensure this matches the backend key
+    setLoadingCaption(true); // Disable button & show loading text
 
-    axios
-      .post("http://localhost:3000/ai/generateCaption", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-        setCaption(response.data.caption);
-        setError("");
-      })
-      .catch((error) => {
-        console.error(error);
-        setError("Failed to generate caption.");
+    const formData = new FormData();
+    formData.append("image", media);
+
+    try {
+      const response = await axios.post("http://localhost:3000/ai/generateCaption", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
       });
+      setCaption(response.data.caption);
+      setError("");
+    } catch (error) {
+      console.error(error);
+      setError("Failed to generate caption.");
+    } finally {
+      setLoadingCaption(false); // Enable button again
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -51,8 +52,10 @@ const CreatePost = () => {
       return;
     }
 
+    setPosting(true); // Disable button & show loading text
+
     const formData = new FormData();
-    formData.append("media", media);
+    formData.append("image", media);
     formData.append("caption", caption);
 
     try {
@@ -65,6 +68,8 @@ const CreatePost = () => {
       navigate("/profile");
     } catch (error) {
       setError(error.response?.data?.message || "Something went wrong!");
+    } finally {
+      setPosting(false); // Enable button again
     }
   };
 
@@ -76,22 +81,22 @@ const CreatePost = () => {
       {/* Create Post Form */}
       <main className="flex justify-center items-center h-screen flex-grow bg-gray-100">
         <div className="bg-white p-5 rounded-lg shadow-md w-[400px] relative">
-          {/* Create Caption Button (Top Right) */}
-          <Link
+          {/* AI Caption Button */}
+          <button
             onClick={handleGenerateCaption}
-            className="absolute top-2 right-2 bg-pink-500 text-white px-3 py-1 text-sm rounded-md hover:bg-pink-600"
+            disabled={loadingCaption}
+            className={`absolute top-2 right-2 px-3 py-1 text-sm rounded-md ${
+              loadingCaption
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-pink-500 hover:bg-pink-600"
+            } text-white`}
           >
-            AICaption
-          </Link>
+            {loadingCaption ? "Generating..." : "AI Caption"}
+          </button>
 
-          <h2 className="text-center text-xl font-semibold mb-4">
-            Create Post
-          </h2>
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col gap-4"
-            encType="multipart/form-data"
-          >
+          <h2 className="text-center text-xl font-semibold mb-4">Create Post</h2>
+
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <input
               type="file"
               accept="image/*, video/*"
@@ -102,16 +107,9 @@ const CreatePost = () => {
             {mediaPreview && (
               <div className="w-full flex justify-center">
                 {media.type?.startsWith("image/") ? (
-                  <img
-                    src={mediaPreview}
-                    alt="Preview"
-                    className="object-cover w-[320px] h-[400px] rounded-md"
-                  />
+                  <img src={mediaPreview} alt="Preview" className="object-cover w-[320px] h-[400px] rounded-md" />
                 ) : (
-                  <video
-                    controls
-                    className="object-cover w-[320px] h-[400px] rounded-md"
-                  >
+                  <video controls className="object-cover w-[320px] h-[400px] rounded-md">
                     <source src={mediaPreview} type={media.type} />
                   </video>
                 )}
@@ -124,15 +122,17 @@ const CreatePost = () => {
               onChange={(e) => setCaption(e.target.value)}
               className="border p-2 rounded-md w-full resize-none h-20"
             />
-            {error && (
-              <p className="text-red-500 text-sm text-center">{error}</p>
-            )}
+            {error && <p className="text-red-500 text-sm text-center">{error}</p>}
 
+            {/* Create Post Button */}
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+              disabled={posting}
+              className={`text-white px-4 py-2 rounded-md ${
+                posting ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
+              }`}
             >
-              Post
+              {posting ? "Publishing your post..." : "Post"}
             </button>
           </form>
         </div>

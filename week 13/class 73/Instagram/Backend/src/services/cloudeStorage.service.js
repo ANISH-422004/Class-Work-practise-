@@ -1,22 +1,21 @@
-import { v2 as cloudinary } from 'cloudinary';
+const cloudinary = require('cloudinary').v2;
 const config = require('../config/config');
 const { Readable } = require('stream');
-
 
 // Configuration
 cloudinary.config({
     cloud_name: config.CLOUDINARY_NAME,
     api_key: config.CLOUDINARY_API_KEY,
-    api_secret: config.CLOUDINARY_API_SECRET // Click 'View API Keys' above to copy your API secret
+    api_secret: config.CLOUDINARY_API_SECRET
 });
 
-
-
-export const uploadFile = (fileBuffer) => {
+const uploadFile = (fileBuffer) => {
     return new Promise((resolve, reject) => {
         const uploadStream = cloudinary.uploader.upload_stream({ folder: 'instagram' },
             (err, filedata) => {
-                Readable.from(fileBuffer).pipe(uploadStream);
+                if (err) {
+                    return reject(err);
+                }
                 resolve({
                     url: filedata.url,
                     public_id: filedata.public_id,
@@ -24,11 +23,10 @@ export const uploadFile = (fileBuffer) => {
                     format: filedata.format,
                 });
             }
-        )
+        );
 
-
+        Readable.from(fileBuffer).pipe(uploadStream);
     });
-}
+};
 
-
-
+module.exports = { uploadFile };
