@@ -14,7 +14,7 @@ const AppRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/profile" element={<WithAuth><Profile /></WithAuth>} />
       <Route path="/create-post" element={<WithAuth><CreatePost/></WithAuth>} />
-      <Route path="/feed" element={<WithAuth><PersonalFeed/></WithAuth>} /> 
+      <Route path="/" element={<WithAuth><PersonalFeed/></WithAuth>} /> 
     </Routes>
   );
 };

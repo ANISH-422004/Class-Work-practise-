@@ -23,7 +23,7 @@ const SideNav = () => {
       {/* Navigation Links */}
       <nav className="flex flex-col space-y-4">
         <Link
-          to="/feed"
+          to="/"
           className="flex items-center space-x-2 p-2 rounded hover:bg-gray-100"
         >
           <IoHomeSharp /> <span>Home</span>
