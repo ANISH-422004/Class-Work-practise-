@@ -1,6 +1,6 @@
 const postModel = require("../models/posts.model");
 const UserModel = require("../models/user.model");
-const { uploadFile } = require("../services/cloudeStorageV2.service");
+const { uploadBufferStream } = require("../services/cloudeStorageV2.service");
 
 module.exports.createPostController = async (req, res) => {
     try {
@@ -13,7 +13,7 @@ module.exports.createPostController = async (req, res) => {
 
         const fileBuffer = req.file.buffer;
         const fileName = req.file.originalname;
-        const uploadedMedia = await uploadFile(fileBuffer, fileName);
+        const uploadedMedia = await uploadBufferStream(fileBuffer, fileName);
 
 
         if (!uploadedMedia?.url) {
