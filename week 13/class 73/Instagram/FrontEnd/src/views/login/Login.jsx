@@ -55,12 +55,16 @@ const Login = () => {
             placeholder="Password"
             className="p-2 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
           />
-          
+
           {error &&
-            error.map((e, i) => (
-              <p key={i} className="text-red-500 text-sm text-center">
-                {e.msg + " !"}
-              </p>
+            (Array.isArray(error) ? (
+              error.map((e, i) => (
+                <p key={i} className="text-red-500 text-sm text-center">
+                  {e.msg + " !"}
+                </p>
+              ))
+            ) : (
+              <p className="text-red-500 text-sm text-center">{error + " !"}</p>
             ))}
 
           <button

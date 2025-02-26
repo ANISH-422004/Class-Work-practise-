@@ -1,6 +1,6 @@
 const postModel = require("../models/posts.model");
 const UserModel = require("../models/user.model");
-const { uploadFile } = require("../services/cloudeStorage.service");
+const { uploadFile } = require("../services/cloudeStorageV2.service");
 
 module.exports.createPostController = async (req, res) => {
     try {
@@ -11,9 +11,10 @@ module.exports.createPostController = async (req, res) => {
             return res.status(400).json({ message: "Media file is required" });
         }
 
-        // Upload file to Cloudinary
         const fileBuffer = req.file.buffer;
-        const uploadedMedia = await uploadFile(fileBuffer);
+        const fileName = req.file.originalname;
+        const uploadedMedia = await uploadFile(fileBuffer, fileName);
+
 
         if (!uploadedMedia?.url) {
             return res.status(500).json({ message: "Failed to upload media" });
@@ -25,7 +26,7 @@ module.exports.createPostController = async (req, res) => {
             return res.status(400).json({ message: "Caption required" });
         }
 
-        // Create post with Cloudinary URL
+        // // Create post with Cloudinary URL
         const newPost = await postModel.create({
             media: uploadedMedia.url,
             caption,
