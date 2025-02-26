@@ -154,21 +154,49 @@ class LinkedList {
         }
         let length = 1;
         while (temp.next !== null) {  // ❌ Infinite loop
-            length++; 
+            length++;
             temp = temp.next;
             // ❌ Missing temp = temp.next; (temp never moves forward)
         }
         return length;
     }
-    
+
     // arrati to linkenedList
 
-    arrToLL(arr){
+    arrToLL(arr) {
         for (let i = 0; i < arr.length; i++) {
             this.addFromTail(arr[i])
         }
     }
 
+    removeHead() {
+        let currentHead = this.head
+        if (currentHead === null) {
+            return
+        }
+        this.head = currentHead.next
+        return this.head //node val after the current head
+    }
+
+
+    removeTail() {
+        let head = this.head
+        if (head === null) {
+            return
+        }
+        if (head.next === null) {
+            this.head = null
+            return
+        }
+        let temp = this.head
+        while (temp.next.next !== null) {
+            temp = temp.next
+        }
+
+        temp.next = null
+
+        return this.head
+    }
 }
 
 
@@ -211,7 +239,27 @@ console.log(List2.print())
 console.log(List2.size()) // 3
 
 
-let arr = [10,20,30,40,50]
+let arr = [10, 20, 30, 40, 50]
 let list3 = new LinkedList()
 list3.arrToLL(arr)
 console.log(list3.print()) // 10 -> 20 -> 30 -> 40 -> 50
+
+
+let list4 = new LinkedList()
+list4.addFromTail(10)
+list4.addFromTail(20)
+list4.addFromTail(30)
+console.log(list4.print()) // 10 -> 20 -> 30
+let CH = list4.removeHead()
+console.log(CH)
+console.log(list4.print()) // 20 -> 30 
+
+
+
+let List5 = new LinkedList()
+let arr2 = [10, 23, 33, 56]
+List5.arrToLL(arr2)
+
+
+console.log(List5.removeTail())
+console.log(List5.print())
