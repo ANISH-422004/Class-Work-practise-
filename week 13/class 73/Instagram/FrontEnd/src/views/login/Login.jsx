@@ -21,7 +21,7 @@ const Login = () => {
       })
       .catch((e) => {
         console.error(e);
-        setError(e.response?.data?.message || "Something went wrong!");
+        setError(e.response?.data?.errors || "Something went wrong!");
       });
   };
 
@@ -55,13 +55,13 @@ const Login = () => {
             placeholder="Password"
             className="p-2 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
           />
-
-          {/* Error Message */}
-          {error && (
-            <p className="text-red-500 text-sm font-semibold text-center mb-2">
-              {error}
-            </p>
-          )}
+          
+          {error &&
+            error.map((e, i) => (
+              <p key={i} className="text-red-500 text-sm text-center">
+                {e.msg + " !"}
+              </p>
+            ))}
 
           <button
             type="submit"
@@ -73,7 +73,9 @@ const Login = () => {
 
         {/* Terms & Policies */}
         <p className="text-xs text-gray-500 text-center mt-4 ">
-          <Link to='/register' className="hover:text-blue-400" >Don't Have a Account ? </Link>
+          <Link to="/register" className="hover:text-blue-400">
+            Don't Have a Account ?{" "}
+          </Link>
         </p>
       </section>
     </main>

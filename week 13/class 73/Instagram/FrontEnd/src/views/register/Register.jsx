@@ -23,9 +23,10 @@ const Register = () => {
       })
       .catch((e) => {
         console.error(e);
-        setError(e.response?.data?.message || "Something went wrong!");
+        setError(e.response?.data?.errors || "Something went wrong!");
       });
   };
+  console.log(error)
 
   return (
     <main className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -66,9 +67,11 @@ const Register = () => {
 
           {/* Error Message */}
           {error && (
-            <p className="text-red-500 text-sm font-semibold text-center mb-2">
-              {error}
-            </p>
+            error.map((e, i) => (
+              <p key={i} className="text-red-500 text-sm text-center">
+                {e.msg + " !"}
+              </p>
+            ))
           )}
 
           <button
