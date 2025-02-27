@@ -29,7 +29,7 @@ const CreatePost = () => {
     setLoadingCaption(true); // Disable button & show loading text
 
     const formData = new FormData();
-    formData.append("image", media);
+    formData.append("media", media);
 
     try {
       const response = await axios.post("http://localhost:3000/ai/generateCaption", formData, {
@@ -55,7 +55,7 @@ const CreatePost = () => {
     setPosting(true); // Disable button & show loading text
 
     const formData = new FormData();
-    formData.append("image", media);
+    formData.append("media", media);
     formData.append("caption", caption);
 
     try {

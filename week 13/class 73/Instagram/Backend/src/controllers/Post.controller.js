@@ -29,6 +29,7 @@ module.exports.createPostController = async (req, res) => {
         // // Create post with Cloudinary URL
         const newPost = await postModel.create({
             media: uploadedMedia.url,
+            thumbnail: uploadedMedia.thumbnailUrl,
             caption,
             userId,
         });

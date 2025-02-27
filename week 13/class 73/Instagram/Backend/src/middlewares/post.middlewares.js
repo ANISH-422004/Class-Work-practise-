@@ -8,4 +8,4 @@ const upload = multer({ storage: storage,
  })
 
 
-module.exports.handelFileUpload = upload.single('image')
+module.exports.handelFileUpload = upload.single('media')

@@ -1,7 +1,7 @@
 const ImageKit = require("imagekit");
-const { PassThrough } = require("stream");
+const { Readable } = require("stream");
 const config = require("../config/config");
-
+const mongoose = require("mongoose");
 const imagekit = new ImageKit({
     publicKey: config.IMAGEKIT_PUBLIC_KEY,
     privateKey: config.IMAGEKIT_PRIVATE_KEY,
@@ -11,12 +11,13 @@ const imagekit = new ImageKit({
 // Function to convert buffer to stream and upload
 const uploadBufferStream = async (fileBuffer, fileName) => {
     try {
-        const passThroughStream = new PassThrough();
-        passThroughStream.end(fileBuffer); // Convert buffer to a readable stream
+
 
         const result = await imagekit.upload({
-            file: passThroughStream, // Pass the readable stream
-            fileName: fileName,
+            file: Readable.from(fileBuffer), // Convert buffer to stream
+            fileName:new mongoose.Types.ObjectId(), // Unique file name
+            isPublished: true,
+            isPrivateFile: false,
             folder: "/INSTAGRAM",
         });
 
