@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dark-theme {
+  --bg-color: #1a202c;
+  --text-color: #f7fafc;
+}
+
+.light-theme {
+  --bg-color: #ffffff;
+  --text-color: #1a202c;
+}
+
