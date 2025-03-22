@@ -1,32 +1,11 @@
 import React, { useReducer, useState } from "react";
+import { initailStateForTodo } from "../app/states/TodoState";
+import { TodoReducer } from "../app/reducers/TodoReducer";
 
-const initailState = [];
-
-function TodoReducer(state, action) {
-  switch (action.type) {
-    case "add":
-      return [
-        ...state,
-        { id: Date.now(), todo: action.payload, complete: false },
-      ];
-    case "remove":
-      return state.filter((item) => item.id !== action.payload);
-
-    case "toggle":
-      return state.map((item) =>
-        item.id === action.payload
-          ? { ...item, complete: !item.complete }
-          : item
-      );
-
-    default:
-      break;
-  }
-}
 
 const Page3 = () => {
   const [todo, setTodo] = useState("");
-  const [state, dispatch] = useReducer(TodoReducer, initailState);
+  const [state, dispatch] = useReducer(TodoReducer, initailStateForTodo);
 
   console.log(state);
   return (
