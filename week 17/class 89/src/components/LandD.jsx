@@ -8,12 +8,16 @@ const LandD = () => {
     <div
       className={`w-full h-screen flex flex-col gap-10 items-center justify-center
     transition-all duration-500
-    ${isDark ? "bg-black text-white" : "bg-white text-black"}`}
+    ${isDark ? "bg-black text-white" : "bg-white text-black"}`
+    }     
     >
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate,
         quas maxime distinctio a eveniet unde veniam amet placeat eligendi
-        ullam!
+        ullam! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta
+        exercitationem modi numquam voluptates rem obcaecati? Laboriosam, earum
+        explicabo quod beatae blanditiis incidunt, impedit laborum harum
+        quibusdam fuga dicta, at optio!
       </p>
 
       <button
