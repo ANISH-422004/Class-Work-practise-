@@ -77,3 +77,8 @@ class BinaryTree {
 }
 
 // Run the program
+
+let tree1 = new BinaryTree();
+tree1.buildTree();
+
+console.log("Tree 1:" , tree1.root); 
