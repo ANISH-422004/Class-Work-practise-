@@ -211,6 +211,22 @@ var upiPayment = new UpiPayment(750);
 upiPayment.processPayment();
 // FUNCTIONS
 //callback function
+//Syntax : function functionName(parameter: type, callback: (parameter: type) => returnType) {
+//    // function body
+//}
+//Example :
+// function add(a: number, b: number, callback: (result: number) => void) {
+//     const result = a + b;
+//     callback(result);
+// }
+// function add(a: number, b: number, callback: (result: number) => void) {
+//     const result = a + b;
+//     callback(result);
+// }
+// useage : 
+// add(5, 10, (result) => {
+//     console.log("The sum is: " + result);
+// });
 var abcd = function (name, cb) {
     console.log(name);
     return cb();
@@ -220,3 +236,28 @@ var ans = abcd("anish", function () {
     return 2;
 });
 console.log(ans);
+// 👇 Actual implementation
+function greet(person) {
+    if (typeof person === "string") {
+        return "Hello, ".concat(person);
+    }
+    else {
+        return "User ID: ".concat(person);
+    }
+}
+console.log(greet("Anish")); // Hello, Anish
+console.log(greet(101)); // User ID: 101
+function combine(a, b) {
+    return a + b;
+}
+console.log(combine("Priv", "Guard")); // "PrivGuard"
+console.log(combine(10, 5)); // 15
+function makePayment(amount, currency) {
+    if (currency) {
+        return "Paid ".concat(amount, " in ").concat(currency);
+    }
+    return "Paid ".concat(amount, " in default currency");
+}
+console.log(makePayment(100)); // Paid 100 in default currency
+console.log(makePayment(200, "USD")); // Paid 200 in USD
+console.log(makePayment(300, "INR")); // Paid 300 in INR

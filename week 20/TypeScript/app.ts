@@ -283,3 +283,59 @@ let ans: number = abcd("anish", function () {
 
 
 console.log(ans)
+
+
+
+//Function overloading
+//FFunction Overloading allows you to define multiple function signatures for the same function name.It enables your function to behave differently based on the input parameter types or count.
+
+
+//🔧 Syntax
+// Step 1: Define multiple signatures
+// Step 2: Provide a single implementation
+
+
+//Eg : 
+function greet(person: string): string;
+function greet(person: number): string;
+
+// 👇 Actual implementation
+function greet(person: string | number): string {
+  if (typeof person === "string") {
+    return `Hello, ${person}`;
+  } else {
+    return `User ID: ${person}`;
+  }
+}
+
+console.log(greet("Anish"));  // Hello, Anish
+console.log(greet(101));      // User ID: 101
+
+
+//Eg:
+function combine(a: string, b: string): string;
+function combine(a: number, b: number): number;
+
+function combine(a: any, b: any): any {
+  return a + b;
+}
+
+console.log(combine("Priv", "Guard")); // "PrivGuard"
+console.log(combine(10, 5));           // 15
+
+
+
+//Eg : 
+function makePayment(amount: number): string;
+function makePayment(amount: number, currency: string): string;
+
+function makePayment(amount: number, currency?: string): string {
+  if (currency) {
+    return `Paid ${amount} in ${currency}`;
+  }
+  return `Paid ${amount} in default currency`;
+}
+
+console.log(makePayment(100));           // Paid 100 in default currency
+console.log(makePayment(200, "USD"));    // Paid 200 in USD
+console.log(makePayment(300, "INR"));    // Paid 300 in INR
