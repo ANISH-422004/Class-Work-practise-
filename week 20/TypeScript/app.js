@@ -261,3 +261,46 @@ function makePayment(amount, currency) {
 console.log(makePayment(100)); // Paid 100 in default currency
 console.log(makePayment(200, "USD")); // Paid 200 in USD
 console.log(makePayment(300, "INR")); // Paid 300 in INR
+//Generics
+//Generics allow you to create reusable components that can work with any data type. They provide a way to define a function, class, or interface that can operate on multiple types without losing type safety.
+// function Generics 
+function genericFunction(a, b) {
+    console.log(a, b);
+    // return a; // Ensure a value is returned
+    return "Hello"; // Type assertion to T
+}
+genericFunction(10, 20); // number  // Explicitly specifying T as number
+var a = genericFunction(10, 20); // number  // TS infers T as number automatically
+console.log(a);
+genericFunction("Hello", "World"); // string  
+var rocket1 = {
+    name: "Falcon 9",
+    speed: 20000,
+    fuel: 1000,
+    key: "1234"
+};
+var rocket2 = {
+    name: "Falcon 9",
+    speed: 20000,
+    fuel: 1000,
+    key: 1234
+};
+console.log(rocket1.key); // string
+console.log(rocket2.key); // number
+//Generics Classes
+var GenericClass = /** @class */ (function () {
+    function GenericClass() {
+        this.items = [];
+    }
+    GenericClass.prototype.addItem = function (item) {
+        this.items.push(item);
+    };
+    GenericClass.prototype.getItems = function () {
+        return this.items;
+    };
+    return GenericClass;
+}());
+var numberClass = new GenericClass();
+numberClass.addItem(1);
+numberClass.addItem(2);
+console.log(numberClass.getItems()); // [1, 2]

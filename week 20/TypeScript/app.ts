@@ -301,11 +301,11 @@ function greet(person: number): string;
 
 // 👇 Actual implementation
 function greet(person: string | number): string {
-  if (typeof person === "string") {
-    return `Hello, ${person}`;
-  } else {
-    return `User ID: ${person}`;
-  }
+    if (typeof person === "string") {
+        return `Hello, ${person}`;
+    } else {
+        return `User ID: ${person}`;
+    }
 }
 
 console.log(greet("Anish"));  // Hello, Anish
@@ -317,7 +317,7 @@ function combine(a: string, b: string): string;
 function combine(a: number, b: number): number;
 
 function combine(a: any, b: any): any {
-  return a + b;
+    return a + b;
 }
 
 console.log(combine("Priv", "Guard")); // "PrivGuard"
@@ -330,12 +330,80 @@ function makePayment(amount: number): string;
 function makePayment(amount: number, currency: string): string;
 
 function makePayment(amount: number, currency?: string): string {
-  if (currency) {
-    return `Paid ${amount} in ${currency}`;
-  }
-  return `Paid ${amount} in default currency`;
+    if (currency) {
+        return `Paid ${amount} in ${currency}`;
+    }
+    return `Paid ${amount} in default currency`;
 }
 
 console.log(makePayment(100));           // Paid 100 in default currency
 console.log(makePayment(200, "USD"));    // Paid 200 in USD
 console.log(makePayment(300, "INR"));    // Paid 300 in INR
+
+
+//Generics
+//Generics allow you to create reusable components that can work with any data type. They provide a way to define a function, class, or interface that can operate on multiple types without losing type safety.
+
+// function Generics 
+
+function genericFunction<T>(a: T, b: T): T {
+    console.log(a, b);
+    // return a; // Ensure a value is returned
+    return <T> "Hello" // Type assertion to T
+}
+
+genericFunction<number>(10,20) // number  // Explicitly specifying T as number
+
+let a = genericFunction(10,20) // number  // TS infers T as number automatically
+console.log(a)
+genericFunction("Hello", "World") // string  
+
+//interface Generics
+
+
+interface rocket <T> {
+    name: string,
+    speed: number,
+    fuel: number,
+    key: T
+
+}
+
+
+const rocket1: rocket<string> = {
+    name: "Falcon 9",
+    speed: 20000,
+    fuel: 1000,
+    key: "1234"
+}
+
+const rocket2: rocket<number> = {
+    name: "Falcon 9",
+    speed: 20000,
+    fuel: 1000,
+    key: 1234
+}
+
+console.log(rocket1.key) // string
+console.log(rocket2.key) // number
+
+
+//Generics Classes
+
+
+class GenericClass<T> {
+    private items: T[] = [];
+
+    addItem(item: T): void {
+        this.items.push(item);
+    }
+
+    getItems(): T[] {
+        return this.items;
+    }
+}
+
+const numberClass = new GenericClass<number>();
+numberClass.addItem(1);
+numberClass.addItem(2);
+console.log(numberClass.getItems()); // [1, 2]
