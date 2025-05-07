@@ -66,16 +66,20 @@
 
 
 class User {
-    public name: string;
-    private password: string;
-    protected role: string;
+    // public name: string;
+    // private password: string;
+    // protected role: string;
 
 
-    constructor(name: string, password: string, role: string) {
-        this.name = name;
-        this.password = password;
-        this.role = role;
-    }
+    // constructor(name: string, password: string, role: string) {
+    //     this.name = name;
+    //     this.password = password;
+    //     this.role = role;
+    // }
+
+    // parameter properties
+    constructor(public name: string, private password: string, protected role: string) {}
+
 
     public greet() {
         console.log(`Hi, I’m ${this.name}`);
@@ -103,7 +107,7 @@ class subUser extends User {
     //     console.log(`Password is ${this.password}`); // ❌ Error (private)
     // }
 
-    public showAdmin(){
+    public showAdmin() {
         console.log(`Role is ${this.role}`); // ✅ OK (protected)
     }
 
@@ -111,8 +115,8 @@ class subUser extends User {
 }
 
 
-const subUser1 = new subUser("anish" , "1234" , "user")
-subUser1.showRole(); 
+const subUser1 = new subUser("anish", "1234", "user")
+subUser1.showRole();
 // ✅ OK (protected)
 // subUser1.showPassword() // shows error while compilation 
 subUser1.showAdmin()
