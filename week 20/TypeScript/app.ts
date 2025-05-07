@@ -407,3 +407,47 @@ const numberClass = new GenericClass<number>();
 numberClass.addItem(1);
 numberClass.addItem(2);
 console.log(numberClass.getItems()); // [1, 2]
+
+
+
+
+//Type Guards using typeof and instanceof in TypeScript. {Type Narrowing}
+//Type Guards are special checks that help TypeScript understand the type of a variable at runtime. They allow you to narrow down the type of a variable within a specific block of code, making it easier to work with different types safely.
+
+
+function abcdef(arg: string | number | any) : string | number {
+    if (typeof arg === "number") {
+      return "number";
+    } else if (typeof arg === "string") {
+      return "string";
+    } else {
+      throw new Error("pagal ho gaya hai kya fraaaaands");
+    }
+  }
+  
+
+
+  class TvKaRemote {
+    switchTvOff() {
+      console.log("switching off tv");
+    }
+  }
+  
+  class CarKaRemote {
+    switchCarOff() {
+      console.log("switching off car");
+    }
+  }
+  
+  function switchOffKaro(device: TvKaRemote | CarKaRemote) {
+    if (device instanceof TvKaRemote) {
+      device.switchTvOff();
+    } else if (device instanceof CarKaRemote) {
+      device.switchCarOff();
+    }
+  }
+  
+
+
+switchOffKaro(new TvKaRemote()) // switching off tv
+switchOffKaro(new CarKaRemote()) // switching off car
